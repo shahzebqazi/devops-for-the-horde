@@ -17,6 +17,16 @@ body {
   line-height: 1.65;
 }
 
+/* Full-viewport art layer: stays fixed while page scrolls (main/footer paint over it) */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url("../assets/hero-horde-peons.jpg") center 28% / cover no-repeat;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
 a {
   color: var(--horde-bright);
   text-decoration: none;
@@ -136,9 +146,10 @@ a.btn {
   color: var(--horde-bright);
 }
 
-/* Showcase: full-bleed hero image (the art is the star) */
+/* Showcase: hero stacks above fixed .page-bg */
 .showcase {
   position: relative;
+  z-index: 1;
 }
 
 .hero-showcase {
@@ -148,21 +159,7 @@ a.btn {
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  background: var(--bg);
-}
-
-.hero-showcase__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-showcase__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
-  transform: scale(1.01);
+  background: transparent;
 }
 
 /* Readability: stronger backing behind the text column (title + body copy) */
@@ -220,8 +217,8 @@ a.btn {
     min-height: min(88vh, 820px);
   }
 
-  .hero-showcase__media img {
-    object-position: center 20%;
+  .page-bg {
+    background-position: center 20%;
   }
 
   .hero-showcase__veil {
@@ -512,11 +509,15 @@ h1 .accent {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-/* Sections (mirror README) */
+/* Sections (mirror README) — opaque sheet scrolls over fixed hero */
 main {
+  position: relative;
+  z-index: 1;
   max-width: 920px;
   margin: 0 auto;
   padding: 0.75rem clamp(1.25rem, 4vw, 2rem) 4rem;
+  background: var(--bg);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .section {
@@ -628,6 +629,8 @@ main {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-body);
   padding: 2rem clamp(1.25rem, 4vw, 2rem);
   color: rgba(233, 242, 237, 0.52);
@@ -635,6 +638,7 @@ main {
   line-height: 1.65;
   max-width: 920px;
   margin: 0 auto;
+  background: var(--bg);
 }
 
 .site-footer em {
