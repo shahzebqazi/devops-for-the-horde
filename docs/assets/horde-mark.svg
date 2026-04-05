@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <title>devops-for-the-horde vector mark</title>
+  <rect width="64" height="64" rx="14" fill="#070a09"/>
+  <path d="M18 44 L28 20 L32 22 L24 46 Z" fill="#1f6f4a"/>
+  <path d="M36 18 L46 42 L42 44 L32 20 Z" fill="#2dd48a" opacity="0.85"/>
+  <path d="M20 46 H44" stroke="#e8c547" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 26 L48 26 M44 22 L44 30" stroke="#e8c547" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

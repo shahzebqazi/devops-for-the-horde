@@ -15,9 +15,9 @@ When the user **adds, removes, or renames** satellite repositories—or changes 
 - **Landing page**: “glass” panels (blur, translucent layers, subtle borders), dark base, **Horde green** accents — inspired by Cursor-style glass UI, not a pixel copy of any product.
 - **Warcraft flavor** is **thematic** (peons, Horde, humor). Do **not** embed Blizzard-owned art or rip game assets.
 
-## Stock imagery
+## Site imagery
 
-- Prefer **royalty-free** sources (e.g. Pexels, Unsplash) and **keep attribution** in `docs/index.html` when required by the license.
+- **Hero + favicon** live under `docs/assets/` (AI-generated originals for this project). If you swap in stock photos instead, **keep attribution** in `docs/index.html` when the license requires it.
 
 ## Safety
 

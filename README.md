@@ -32,7 +32,7 @@
 ## Site (GitHub Pages)
 
 - **Landing page**: [sqazi.sh/devops-for-the-horde](https://sqazi.sh/devops-for-the-horde/) (canonical; `*.github.io` redirects here).
-- **Hero image**: stock forge / labor imagery (see footer on the site for attribution). WC3 *flavor*, not Blizzard assets.
+- **Hero & logo**: original AI-generated assets in `docs/assets/` (orc-peon coding horde theme). WC3 *flavor*, not Blizzard IP.
 
 ---
 

@@ -6,6 +6,13 @@
   <title>devops-for-the-horde</title>
   <meta name="description" content="Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows." />
   <link rel="canonical" href="https://sqazi.sh/devops-for-the-horde/" />
+  <link rel="icon" type="image/png" href="assets/logo-horde.png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="assets/logo-horde.png" />
+  <meta property="og:title" content="devops-for-the-horde" />
+  <meta property="og:description" content="Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows." />
+  <meta property="og:image" content="https://sqazi.sh/devops-for-the-horde/assets/hero-horde-peons.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" as="image" href="assets/hero-horde-peons.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -46,7 +53,7 @@
       background:
         radial-gradient(120% 80% at 50% 100%, rgba(7, 10, 9, 0.1), rgba(7, 10, 9, 0.88)),
         linear-gradient(120deg, rgba(12, 40, 28, 0.55), rgba(7, 10, 9, 0.65)),
-        url("https://images.pexels.com/photos/7688334/pexels-photo-7688334.jpeg?auto=compress&cs=tinysrgb&w=1920") center/cover no-repeat;
+        url("assets/hero-horde-peons.jpg") center/cover no-repeat;
       transform: scale(1.02);
     }
 
@@ -98,7 +105,13 @@
       background: rgba(31, 111, 74, 0.35);
     }
 
-    .badge svg { width: 1rem; height: 1rem; }
+    .badge__mark {
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
 
     h1 {
       margin: 0;
@@ -248,9 +261,7 @@
     <div class="hero__content">
       <div class="glass panel">
         <div class="badge" title="For the Warchief of your own rig">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3L4 7v5c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-4z" stroke="currentColor" stroke-width="1.6" />
-          </svg>
+          <img src="assets/logo-horde.png" alt="" width="22" height="22" class="badge__mark" />
           Lok’tar — Mac bootstrap
         </div>
         <h1>devops-for-the-horde <span>zero → raid-ready</span></h1>
@@ -263,15 +274,11 @@
           <a class="btn btn--ghost" href="https://github.com/shahzebqazi/devops-for-the-horde/issues">Ideas &amp; issues</a>
         </div>
         <div class="peon-row">
-          <div class="peon-icon" aria-hidden="true" title="Peon spirit (original mark)">
-            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-              <ellipse cx="16" cy="22" rx="9" ry="5" fill="#1f6f4a" opacity="0.9"/>
-              <circle cx="16" cy="13" r="8" fill="#2dd48a" opacity="0.9"/>
-              <rect x="10" y="6" width="12" height="4" rx="1" fill="#e8c547"/>
-            </svg>
+          <div class="peon-icon" aria-hidden="true" title="Horde mark">
+            <img src="assets/logo-horde.png" alt="" width="22" height="22" />
           </div>
           <div>
-            <strong style="color: rgba(233,242,237,0.85); font-weight: 600;">Peon energy</strong> — stock forge hero, WC3 flavor in prose only (no Blizzard rips).
+            <strong style="color: rgba(233,242,237,0.85); font-weight: 600;">Peon energy</strong> — original AI hero art + logo (fan flavor; not Blizzard assets).
           </div>
         </div>
         <div class="subgrid" style="margin-top: 1.25rem;">
@@ -289,9 +296,7 @@
   </header>
   <footer>
     <p>
-      Hero photograph:
-      <a href="https://www.pexels.com/photo/person-holding-blacksmith-hammer-7688334/" rel="noopener noreferrer">Pexels</a>
-      (royalty-free stock). WC3 / Horde theming is fan flavor only; this site is not affiliated with Blizzard.
+      Hero &amp; logo: original AI-generated imagery for this project (orc-peon coding horde theme; not affiliated with Blizzard).
       · Contact: <a href="mailto:willy@iconoclastaud.io">willy@iconoclastaud.io</a>
     </p>
   </footer>
