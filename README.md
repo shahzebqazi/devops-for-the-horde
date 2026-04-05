@@ -8,8 +8,6 @@
 
 <img src="https://raw.githubusercontent.com/shahzebqazi/devops-for-the-horde/main/docs/assets/hero-horde-peons.jpg" alt="Hero art: stylized orc peon workers at glowing terminals in a crowded coding hall — original AI art for this project." width="780" />
 
-<sub>Same artwork as the <a href="https://sqazi.sh/devops-for-the-horde/">live site</a> hero — theme only, not Blizzard IP.</sub>
-
 <br/><br/>
 
 <p align="center">
