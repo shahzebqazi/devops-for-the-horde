@@ -1,0 +1,102 @@
+/**
+ * Minicons: HTML/CSS sources for PNG export (see tools/minicon-export).
+ * Frames use corner “flags” + border shapes; glyphs are simple geometric marks.
+ */
+@import url("horde-tokens.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Export backgrounds (set by Kotlin via data-export-bg on <html>) */
+html[data-export-bg="transparent"] body {
+  background: transparent;
+}
+
+html[data-export-bg="clear"] body {
+  background: var(--clear-bg);
+}
+
+html[data-export-bg="black"] body {
+  background: #000000;
+}
+
+.export-stage {
+  width: 256px;
+  height: 256px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Border + corner flags */
+.minicon-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 208px;
+  max-height: 208px;
+  border-radius: 18px;
+  border: 2px solid var(--gold);
+  background: linear-gradient(145deg, rgba(31, 111, 74, 0.35), rgba(7, 10, 9, 0.85));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Triangular corner flags */
+.minicon-frame::before,
+.minicon-frame::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 2;
+}
+
+.minicon-frame::before {
+  top: -2px;
+  left: 14px;
+  border-width: 0 10px 14px 10px;
+  border-color: transparent transparent var(--gold) transparent;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+}
+
+.minicon-frame::after {
+  bottom: -2px;
+  right: 14px;
+  border-width: 14px 10px 0 10px;
+  border-color: var(--horde-bright) transparent transparent transparent;
+  opacity: 0.9;
+}
+
+.glyph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.glyph svg {
+  width: 72%;
+  height: 72%;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+html[data-export-bg="clear"] .minicon-frame {
+  border-color: var(--horde);
+}
+
+html[data-export-bg="black"] .minicon-frame {
+  background: linear-gradient(145deg, rgba(31, 111, 74, 0.5), rgba(20, 28, 24, 0.95));
+}

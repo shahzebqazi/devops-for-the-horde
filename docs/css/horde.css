@@ -72,7 +72,7 @@ a.btn {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Floated over full-bleed hero image */
+/* Light bar over hero art — keep the illustration visible */
 .site-header--on-hero {
   position: absolute;
   left: 0;
@@ -80,13 +80,13 @@ a.btn {
   top: 0;
   background: linear-gradient(
     to bottom,
-    rgba(7, 10, 9, 0.78) 0%,
-    rgba(7, 10, 9, 0.35) 55%,
+    rgba(7, 10, 9, 0.42) 0%,
+    rgba(7, 10, 9, 0.12) 65%,
     transparent 100%
   );
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .brand {
@@ -162,50 +162,45 @@ a.btn {
   background: transparent;
 }
 
-/* Readability: stronger backing behind the text column (title + body copy) */
+/* Light vertical wash only — do not cover the whole illustration */
 .hero-showcase__veil {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(7, 10, 9, 0.18) 0%,
-      rgba(7, 10, 9, 0.04) 36%,
-      rgba(7, 10, 9, 0.48) 70%,
-      rgba(7, 10, 9, 0.94) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(7, 10, 9, 0.9) 0%,
-      rgba(7, 10, 9, 0.55) min(46%, 26rem),
-      rgba(7, 10, 9, 0.12) min(62%, 36rem),
-      transparent min(78%, 48rem)
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(7, 10, 9, 0.03) 0%,
+    transparent 45%,
+    rgba(7, 10, 9, 0.18) 78%,
+    rgba(7, 10, 9, 0.45) 100%
+  );
 }
 
-/* Subtle tech grid — low contrast so it doesn’t fight the artwork */
-.hero-showcase__grid {
+/* Gradient bridge: hero art → page background (main sits on solid --bg) */
+.hero-showcase__bridge {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(32vh, 220px);
+  z-index: 2;
   pointer-events: none;
-  opacity: 0.12;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, black 0%, transparent 75%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(7, 10, 9, 0.55) 55%,
+    var(--bg) 100%
+  );
 }
 
 .hero-showcase__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 5.5rem clamp(1.25rem, 4vw, 2rem) clamp(2rem, 4vw, 2.75rem);
+  padding: 5.5rem clamp(1.25rem, 4vw, 2rem) clamp(2.5rem, 5vw, 3.25rem);
 }
 
 .hero-showcase__panel {
@@ -222,12 +217,16 @@ a.btn {
   }
 
   .hero-showcase__veil {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(7, 10, 9, 0.25) 0%,
-        rgba(7, 10, 9, 0.5) 100%
-      );
+    background: linear-gradient(
+      180deg,
+      rgba(7, 10, 9, 0.06) 0%,
+      transparent 35%,
+      rgba(7, 10, 9, 0.35) 100%
+    );
+  }
+
+  .hero-showcase__bridge {
+    height: min(38vh, 200px);
   }
 
   .hero-showcase__panel {
@@ -244,11 +243,13 @@ a.btn {
 }
 
 .hero-showcase .hero-showcase__panel.glass {
-  background: rgba(10, 16, 14, 0.86);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(7, 10, 9, 0.38);
+  border-color: rgba(255, 255, 255, 0.16);
   box-shadow:
-    0 28px 90px rgba(0, 0, 0, 0.58),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .hero-showcase__intro {
@@ -520,7 +521,38 @@ main {
   margin: 0 auto;
   padding: 0.75rem clamp(1.25rem, 4vw, 2rem) 4rem;
   background: var(--bg);
-  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 -8px 48px rgba(0, 0, 0, 0.4);
+}
+
+.satellite-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.satellite-list__item {
+  margin: 0.45rem 0;
+}
+
+.satellite-list__status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(233, 242, 237, 0.48);
+  margin: 0.35rem 0 0;
+}
+
+.satellite-list__loading,
+.satellite-list__empty {
+  list-style: none;
+  margin-left: -1.2rem;
+  padding-left: 0;
+  color: var(--muted);
+}
+
+.satellite-list__domains {
+  opacity: 0.88;
+  font-size: 0.95em;
 }
 
 .section {

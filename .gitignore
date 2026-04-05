@@ -2,3 +2,7 @@
 .env
 .env.*
 *.local
+
+# Gradle (minicon-export tool)
+tools/minicon-export/.gradle/
+tools/minicon-export/build/

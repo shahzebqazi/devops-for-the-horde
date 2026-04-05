@@ -10,6 +10,10 @@
 | This repo | **Orc burrow**: master config, site, and coordination docs |
 | Other repos | **Specialized units**: per-app automation, Nix/Homebrew slices, experiments |
 
+**Satellite repos** (see [`config/master.yaml`](config/master.yaml)):
+
+- **[main-release](https://github.com/shahzebqazi/main-release)** — Mac → NixOS bootstrap inventory, flake umbrella, and satellite install orchestration.
+
 **Contact:** [willy@iconoclastaud.io](mailto:willy@iconoclastaud.io)
 
 ---
@@ -34,6 +38,7 @@
 
 - **Landing page**: [sqazi.sh/devops-for-the-horde](https://sqazi.sh/devops-for-the-horde/) (canonical; `*.github.io` redirects here).
 - **Hero & logo**: original AI-generated assets in `docs/assets/` (orc-peon coding horde theme). WC3 *flavor*, not Blizzard IP.
+- **Satellite list** on the site loads from **`docs/config/master.yaml`** (a copy of `config/master.yaml`). After editing the root manifest, run **`./scripts/sync-manifest.sh`** and commit so Pages serves the updated file.
 
 ---
 

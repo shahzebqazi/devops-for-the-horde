@@ -38,6 +38,7 @@
       <nav class="nav-links" aria-label="Page">
         <a href="#overview">Overview</a>
         <a href="#horde-ops">Horde ops</a>
+        <a href="#satellites">Satellites</a>
         <a href="#site">Site</a>
         <a href="#assets">Assets</a>
         <a href="#contribute">Contribute</a>
@@ -46,7 +47,7 @@
 
     <section class="hero-showcase" role="banner" aria-labelledby="hero-title">
       <div class="hero-showcase__veil" aria-hidden="true"></div>
-      <div class="hero-showcase__grid" aria-hidden="true"></div>
+      <div class="hero-showcase__bridge" aria-hidden="true"></div>
       <div class="hero-showcase__content">
         <div class="glass panel hero-showcase__panel">
           <div class="hero-showcase__intro">
@@ -119,6 +120,27 @@
       </ol>
     </section>
 
+    <section class="section" id="satellites" aria-labelledby="satellites-heading">
+      <p class="section__label">Units</p>
+      <h2 id="satellites-heading">Satellite repos</h2>
+      <p>
+        Loaded from <code>config/master.yaml</code> (mirrored under <code>docs/config/</code> for this site). Add a repo there and run
+        <code>scripts/sync-manifest.sh</code> — or let an agent sync — and this list updates on refresh.
+      </p>
+      <p id="satellite-list-status" class="satellite-list__status" hidden aria-live="polite"></p>
+      <ul id="satellite-list" class="satellite-list">
+        <li class="satellite-list__loading">Loading units…</li>
+      </ul>
+      <noscript>
+        <ul>
+          <li>
+            <a href="https://github.com/shahzebqazi/main-release"><strong>main-release</strong></a>
+            — enable JavaScript for the full manifest-driven list.
+          </li>
+        </ul>
+      </noscript>
+    </section>
+
     <section class="section" id="site" aria-labelledby="site-heading">
       <p class="section__label">Pages</p>
       <h2 id="site-heading">Site (GitHub Pages)</h2>
@@ -153,7 +175,9 @@
       <div class="grid-2">
         <div class="card">
           <h3>Domains</h3>
-          <p>Add repos; have an agent refresh this page when <code>config/master.yaml</code> changes. <em>Work work.</em></p>
+          <p>
+            Edit <code>config/master.yaml</code>, run <code>scripts/sync-manifest.sh</code>, commit — the Satellites list hydrates from the mirrored file. <em>Work work.</em>
+          </p>
         </div>
         <div class="card">
           <h3>Community</h3>
@@ -169,6 +193,7 @@
     </section>
   </main>
 
+  <script type="module" src="js/satellites.js"></script>
   <footer class="site-footer">
     <p>
       Hero &amp; logo: original AI-generated imagery (orc-peon coding horde theme; not affiliated with Blizzard).

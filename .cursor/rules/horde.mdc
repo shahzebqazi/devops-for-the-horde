@@ -9,8 +9,8 @@ globs:
 
 # devops-for-the-horde
 
-- **Central repo**: `config/master.yaml` is the manifest; keep `README.md` and `docs/index.html` aligned when repos or domains change.
+- **Central repo**: `config/master.yaml` is the manifest. After changes, run `./scripts/sync-manifest.sh` so `docs/config/master.yaml` matches (the site fetches that copy). Keep `README.md` aligned; the **Satellite repos** list on `docs/index.html` is **hydrated by** `docs/js/satellites.js` — do not hand-edit duplicate repo rows.
 - **Visuals**: Glass-morphism (blur, translucent panels, subtle borders), dark base, Horde green accents — inspired by modern “glass” UI; do not copy proprietary product pixels.
 - **IP**: Warcraft flavor in text only; **no** Blizzard game assets or ripped art.
 - **Imagery**: AI originals under `docs/assets/` (or stock with attribution if swapped).
-- **Agent tone**: Subtle WC3 peon cadence—*something need doing?* before speculative edits; *work work* for manifest sync; *work complete* when README + site match `master.yaml` (see `AGENTS.md`).
+- **Agent tone**: Subtle WC3 peon cadence—*something need doing?* before speculative edits; *work work* for manifest sync; *work complete* when README, `docs/config/master.yaml`, and site copy match `master.yaml` (see `AGENTS.md`).
