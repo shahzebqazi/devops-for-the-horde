@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repo is the **central** **devops-for-the-horde** project: **master config** in `config/master.yaml`, **GitHub Pages** under `docs/`, and coordination docs.
+This repo is the **central** **devops-for-the-horde** project: **master config** in `config/master.yaml`, **GitHub Pages** under `docs/`, and coordination docs. **Public site URL:** `https://sqazi.sh/devops-for-the-horde/`.
 
 When the user **adds, removes, or renames** satellite repositories—or changes **domains** in `master.yaml`—update:
 
