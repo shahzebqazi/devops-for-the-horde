@@ -16,298 +16,153 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --horde: #1f6f4a;
-      --horde-bright: #2dd48a;
-      --gold: #e8c547;
-      --bg: #070a09;
-      --glass: rgba(18, 24, 22, 0.55);
-      --glass-edge: rgba(255, 255, 255, 0.12);
-      --text: #e9f2ed;
-      --muted: rgba(233, 242, 237, 0.72);
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 92vh;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      padding: clamp(1.25rem, 4vw, 3rem);
-      overflow: hidden;
-    }
-
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(120% 80% at 50% 100%, rgba(7, 10, 9, 0.1), rgba(7, 10, 9, 0.88)),
-        linear-gradient(120deg, rgba(12, 40, 28, 0.55), rgba(7, 10, 9, 0.65)),
-        url("assets/hero-horde-peons.jpg") center/cover no-repeat;
-      transform: scale(1.02);
-    }
-
-    .hero__grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at 50% 20%, black 0%, transparent 70%);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .hero__content {
-      position: relative;
-      z-index: 1;
-      width: min(1040px, 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .glass {
-      background: var(--glass);
-      border: 1px solid var(--glass-edge);
-      border-radius: 20px;
-      backdrop-filter: blur(22px) saturate(160%);
-      -webkit-backdrop-filter: blur(22px) saturate(160%);
-      box-shadow:
-        0 24px 80px rgba(0, 0, 0, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--horde-bright);
-      border: 1px solid rgba(45, 212, 138, 0.35);
-      background: rgba(31, 111, 74, 0.35);
-    }
-
-    .badge__mark {
-      width: 1.1rem;
-      height: 1.1rem;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    h1 span {
-      font-family: "Instrument Serif", Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--gold);
-    }
-
-    .lede {
-      margin: 0;
-      max-width: 52ch;
-      font-size: 1.125rem;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-
-    .cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.25rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.25rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-    }
-
-    .btn:active { transform: translateY(1px); }
-
-    .btn--primary {
-      color: #04140e;
-      background: linear-gradient(180deg, var(--horde-bright), #1f8f5c);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .btn--primary:hover {
-      filter: brightness(1.05);
-    }
-
-    .btn--ghost {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--glass-edge);
-    }
-
-    .btn--ghost:hover {
-      border-color: rgba(255, 255, 255, 0.22);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .panel {
-      padding: clamp(1.25rem, 3vw, 2rem);
-    }
-
-    .subgrid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      margin-top: 0.5rem;
-    }
-
-    .card {
-      padding: 1.1rem 1.25rem;
-      border-radius: 14px;
-      background: rgba(8, 12, 10, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .card h2 {
-      margin: 0 0 0.35rem;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(233, 242, 237, 0.55);
-      font-weight: 600;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-
-    .peon-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
-      color: rgba(233, 242, 237, 0.55);
-    }
-
-    .peon-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: rgba(31, 111, 74, 0.35);
-      border: 1px solid rgba(45, 212, 138, 0.25);
-      flex-shrink: 0;
-    }
-
-    footer {
-      padding: 2rem clamp(1.25rem, 4vw, 3rem) 3rem;
-      color: rgba(233, 242, 237, 0.45);
-      font-size: 0.85rem;
-      line-height: 1.6;
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    footer a {
-      color: var(--horde-bright);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(45, 212, 138, 0.35);
-    }
-
-    footer a:hover {
-      border-bottom-color: var(--horde-bright);
-    }
-
-    .whisper {
-      margin: 0.35rem 0 0;
-      font-size: 0.92rem;
-      font-style: italic;
-      color: rgba(233, 242, 237, 0.45);
-      letter-spacing: 0.01em;
-    }
-  </style>
+  <link rel="stylesheet" href="css/horde.css" />
 </head>
 <body>
-  <header class="hero" role="banner">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="hero__grid" aria-hidden="true"></div>
-    <div class="hero__content">
-      <div class="glass panel">
-        <div class="badge" title="Ready to work. (WC3 peon ready line)">
-          <img src="assets/logo-horde.png" alt="" width="22" height="22" class="badge__mark" />
-          Lok’tar — Mac bootstrap
-        </div>
-        <h1>devops-for-the-horde <span>zero → raid-ready</span></h1>
-        <p class="lede">
-          Central command post for a Mac that goes from <strong>fresh install</strong> to <strong>fully productive</strong> fast:
-          one master config, satellite repos for apps and stacks, and Cursor-first workflows so agents can help keep docs honest.
-        </p>
-        <p class="whisper">Agents: start from <code>config/master.yaml</code>—<em>something need doing?</em></p>
-        <div class="cta">
-          <a class="btn btn--primary" href="https://github.com/shahzebqazi/devops-for-the-horde">View repository</a>
-          <a class="btn btn--ghost" href="https://github.com/shahzebqazi/devops-for-the-horde/issues">Ideas &amp; issues</a>
-        </div>
-        <div class="peon-row">
-          <div class="peon-icon" aria-hidden="true" title="Horde mark">
-            <img src="assets/logo-horde.png" alt="" width="22" height="22" />
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="showcase">
+    <header class="site-header site-header--on-hero">
+      <a class="brand" href="https://sqazi.sh/devops-for-the-horde/">
+        <img src="assets/logo-horde.png" width="36" height="36" alt="" />
+        devops-for-the-horde
+      </a>
+      <nav class="nav-links" aria-label="Page">
+        <a href="#overview">Overview</a>
+        <a href="#horde-ops">Horde ops</a>
+        <a href="#site">Site</a>
+        <a href="#assets">Assets</a>
+        <a href="#contribute">Contribute</a>
+      </nav>
+    </header>
+
+    <section class="hero-showcase" role="banner" aria-labelledby="hero-title">
+      <div class="hero-showcase__media">
+        <img
+          src="assets/hero-horde-peons.jpg"
+          alt="Stylized orc peon workers at glowing terminals in a crowded coding hall — original AI art for this project."
+          width="1920"
+          height="1071"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="hero-showcase__veil" aria-hidden="true"></div>
+      <div class="hero-showcase__grid" aria-hidden="true"></div>
+      <div class="hero-showcase__content">
+        <div class="glass panel hero-showcase__panel">
+          <div class="badge" title="Ready to work.">
+            <img src="assets/logo-horde.png" alt="" width="18" height="18" />
+            Lok’tar — Mac bootstrap
           </div>
-          <div>
-            <strong style="color: rgba(233,242,237,0.85); font-weight: 600;">Peon energy</strong> — original AI hero art + logo. Voice-line nods are fan flavor (not Blizzard assets).
-          </div>
-        </div>
-        <div class="subgrid" style="margin-top: 1.25rem;">
-          <div class="card">
-            <h2>Domains</h2>
-            <p>Computing, game dev, pro audio, coding, 3D, AI lab — add repos; have an agent refresh this page when <code>config/master.yaml</code> changes. <em>Work work.</em></p>
-          </div>
-          <div class="card">
-            <h2>Contribute</h2>
-            <p><em>Be happy to</em> review issues and small PRs. Big swings? Open a thread first—<em>why not?</em></p>
+          <h1 id="hero-title">devops-for-the-horde <span class="accent">zero → raid-ready</span></h1>
+          <p class="lede">
+            Central command post for a Mac that goes from <strong>fresh install</strong> to <strong>fully productive</strong> fast:
+            one master config, satellite repos for apps and stacks, and Cursor-first workflows so agents can help keep docs honest.
+          </p>
+          <p class="whisper">Agents: start from <code>config/master.yaml</code>—<em>something need doing?</em></p>
+          <div class="cta">
+            <a class="btn btn--primary" href="https://github.com/shahzebqazi/devops-for-the-horde">View repository</a>
+            <a class="btn btn--ghost" href="https://github.com/shahzebqazi/devops-for-the-horde/issues">Ideas &amp; issues</a>
           </div>
         </div>
       </div>
-    </div>
-  </header>
-  <footer>
+    </section>
+  </div>
+
+  <main id="main">
+    <section class="section" id="overview" aria-labelledby="overview-heading">
+      <p class="section__label">Map</p>
+      <h2 id="overview-heading">Where you are</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>This repo</h3>
+          <p><strong>Orc burrow</strong> — master config, GitHub Pages site, coordination docs.</p>
+        </div>
+        <div class="card">
+          <h3>Other repos</h3>
+          <p><strong>Specialized units</strong> — per-app automation, Nix/Homebrew slices, experiments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="what-for" aria-labelledby="what-for-heading">
+      <p class="section__label">Mission</p>
+      <h2 id="what-for-heading">What this is for</h2>
+      <ul>
+        <li><strong>Bootstrap a Mac fast</strong> — paths from fresh install → productive (tooling, defaults, verification).</li>
+        <li><strong>Personal domains</strong> — computing, game dev, pro audio &amp; music, coding, 3D, AI lab (expand as you add repos).</li>
+        <li><strong>Solo-first, fork-friendly</strong> — optimize for your machine; others can borrow ideas and open issues.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="horde-ops" aria-labelledby="horde-ops-heading">
+      <p class="section__label">Workflow</p>
+      <h2 id="horde-ops-heading">Horde ops</h2>
+      <ol>
+        <li><code>config/master.yaml</code> — single source of truth for what belongs in the horde.</li>
+        <li><strong>Satellite repos</strong> — own app-specific automation; this repo links and summarizes.</li>
+        <li><strong>Cursor + agents</strong> — <code>AGENTS.md</code> and <code>.cursor/rules</code> for repeatable README/site sync (<em>work work</em>).</li>
+      </ol>
+    </section>
+
+    <section class="section" id="site" aria-labelledby="site-heading">
+      <p class="section__label">Pages</p>
+      <h2 id="site-heading">Site (GitHub Pages)</h2>
+      <p>
+        Canonical URL: <a href="https://sqazi.sh/devops-for-the-horde/">sqazi.sh/devops-for-the-horde</a>
+        (<code>*.github.io</code> redirects here). Hero &amp; logo are AI-generated originals in <code>docs/assets/</code>.
+      </p>
+    </section>
+
+    <div class="divider" role="presentation"></div>
+
+    <section class="section" id="assets" aria-labelledby="assets-heading">
+      <p class="section__label">Minicons</p>
+      <h2 id="assets-heading">HTML/CSS minicons &amp; PNG export</h2>
+      <p>
+        Vector sources live in <code>docs/assets/minicons/*.html</code> with shared <code>docs/css/minicons.css</code>
+        (gold border, corner flags, Horde palette). Kotlin + Playwright in <code>tools/minicon-export</code> rasterizes each
+        to <code>docs/assets/minicons/png/</code> — <strong>transparent</strong>, <strong>clear</strong> (mist background), and <strong>black</strong> variants.
+      </p>
+      <div class="minicon-strip" aria-hidden="true">
+        <figure><img src="assets/minicons/png/config-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Config</figcaption></figure>
+        <figure><img src="assets/minicons/png/agent-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Agent</figcaption></figure>
+        <figure><img src="assets/minicons/png/mac-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Mac</figcaption></figure>
+        <figure><img src="assets/minicons/png/domain-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Domain</figcaption></figure>
+        <figure><img src="assets/minicons/png/repo-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Repo</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" id="contribute" aria-labelledby="contribute-heading">
+      <p class="section__label">Ship it</p>
+      <h2 id="contribute-heading">Contribute</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Domains</h3>
+          <p>Add repos; have an agent refresh this page when <code>config/master.yaml</code> changes. <em>Work work.</em></p>
+        </div>
+        <div class="card">
+          <h3>Community</h3>
+          <p><em>Be happy to</em> review issues and small PRs. Big swings? Open a thread first—<em>why not?</em></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="license-heading">
+      <p class="section__label">Legal</p>
+      <h2 id="license-heading">License</h2>
+      <p>MIT — see the <a href="https://github.com/shahzebqazi/devops-for-the-horde/blob/main/LICENSE">LICENSE</a> file in the repository.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <p>
-      Hero &amp; logo: original AI-generated imagery for this project (orc-peon coding horde theme; not affiliated with Blizzard).
+      Hero &amp; logo: original AI-generated imagery (orc-peon coding horde theme; not affiliated with Blizzard).
       · Contact: <a href="mailto:willy@iconoclastaud.io">willy@iconoclastaud.io</a>
     </p>
+    <p><em>For the Warchief of your own rig. Lok’tar.</em></p>
   </footer>
 </body>
 </html>
