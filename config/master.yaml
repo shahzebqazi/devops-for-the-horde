@@ -1,0 +1,30 @@
+# Master manifest for the horde (central repo).
+# Satellite repos should stay discoverable here; refresh README + docs when this changes.
+
+version: 1
+
+meta:
+  name: devops-for-the-horde
+  summary: "Mac bootstrap hub — master config, Pages site, Cursor/agent docs."
+  owner: shahzebqazi
+
+# Domains you care about (expand freely). Used for docs + agent updates.
+domains:
+  - id: computing
+    label: "General computing"
+  - id: gamedev
+    label: "Game development"
+  - id: audio
+    label: "Pro audio & music"
+  - id: coding
+    label: "Coding"
+  - id: three_d
+    label: "3D work"
+  - id: ai_lab
+    label: "AI lab"
+
+# Register satellite repos (add rows as you create them).
+repositories: []
+
+# Optional: pinned “next build” notes for agents / future you.
+notes: []

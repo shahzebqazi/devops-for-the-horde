@@ -1,0 +1,15 @@
+---
+description: devops-for-the-horde — central hub, glass Pages site, master.yaml sync
+globs:
+  - README.md
+  - docs/**
+  - config/master.yaml
+  - AGENTS.md
+---
+
+# devops-for-the-horde
+
+- **Central repo**: `config/master.yaml` is the manifest; keep `README.md` and `docs/index.html` aligned when repos or domains change.
+- **Visuals**: Glass-morphism (blur, translucent panels, subtle borders), dark base, Horde green accents — inspired by modern “glass” UI; do not copy proprietary product pixels.
+- **IP**: Warcraft flavor in text only; **no** Blizzard game assets or ripped art.
+- **Imagery**: Royalty-free stock only; keep attribution in `docs/index.html` when required.

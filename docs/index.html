@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>devops-for-the-horde</title>
+  <meta name="description" content="Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --horde: #1f6f4a;
+      --horde-bright: #2dd48a;
+      --gold: #e8c547;
+      --bg: #070a09;
+      --glass: rgba(18, 24, 22, 0.55);
+      --glass-edge: rgba(255, 255, 255, 0.12);
+      --text: #e9f2ed;
+      --muted: rgba(233, 242, 237, 0.72);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: clamp(1.25rem, 4vw, 3rem);
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(120% 80% at 50% 100%, rgba(7, 10, 9, 0.1), rgba(7, 10, 9, 0.88)),
+        linear-gradient(120deg, rgba(12, 40, 28, 0.55), rgba(7, 10, 9, 0.65)),
+        url("https://images.pexels.com/photos/7688334/pexels-photo-7688334.jpeg?auto=compress&cs=tinysrgb&w=1920") center/cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 50% 20%, black 0%, transparent 70%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: min(1040px, 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--glass-edge);
+      border-radius: 20px;
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--horde-bright);
+      border: 1px solid rgba(45, 212, 138, 0.35);
+      background: rgba(31, 111, 74, 0.35);
+    }
+
+    .badge svg { width: 1rem; height: 1rem; }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 52ch;
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .btn--primary {
+      color: #04140e;
+      background: linear-gradient(180deg, var(--horde-bright), #1f8f5c);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn--primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn--ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--glass-edge);
+    }
+
+    .btn--ghost:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .panel {
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    .subgrid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 0.5rem;
+    }
+
+    .card {
+      padding: 1.1rem 1.25rem;
+      border-radius: 14px;
+      background: rgba(8, 12, 10, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(233, 242, 237, 0.55);
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .peon-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(233, 242, 237, 0.55);
+    }
+
+    .peon-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(31, 111, 74, 0.35);
+      border: 1px solid rgba(45, 212, 138, 0.25);
+      flex-shrink: 0;
+    }
+
+    footer {
+      padding: 2rem clamp(1.25rem, 4vw, 3rem) 3rem;
+      color: rgba(233, 242, 237, 0.45);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    footer a {
+      color: var(--horde-bright);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(45, 212, 138, 0.35);
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--horde-bright);
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="glass panel">
+        <div class="badge" title="For the Warchief of your own rig">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3L4 7v5c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-4z" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+          Lok’tar — Mac bootstrap
+        </div>
+        <h1>devops-for-the-horde <span>zero → raid-ready</span></h1>
+        <p class="lede">
+          Central command post for a Mac that goes from <strong>fresh install</strong> to <strong>fully productive</strong> fast:
+          one master config, satellite repos for apps and stacks, and Cursor-first workflows so agents can help keep docs honest.
+        </p>
+        <div class="cta">
+          <a class="btn btn--primary" href="https://github.com/shahzebqazi/devops-for-the-horde">View repository</a>
+          <a class="btn btn--ghost" href="https://github.com/shahzebqazi/devops-for-the-horde/issues">Ideas &amp; issues</a>
+        </div>
+        <div class="peon-row">
+          <div class="peon-icon" aria-hidden="true" title="Peon spirit (original mark)">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+              <ellipse cx="16" cy="22" rx="9" ry="5" fill="#1f6f4a" opacity="0.9"/>
+              <circle cx="16" cy="13" r="8" fill="#2dd48a" opacity="0.9"/>
+              <rect x="10" y="6" width="12" height="4" rx="1" fill="#e8c547"/>
+            </svg>
+          </div>
+          <div>
+            <strong style="color: rgba(233,242,237,0.85); font-weight: 600;">Peon energy</strong> — stock forge hero, WC3 flavor in prose only (no Blizzard rips).
+          </div>
+        </div>
+        <div class="subgrid" style="margin-top: 1.25rem;">
+          <div class="card">
+            <h2>Domains</h2>
+            <p>Computing, game dev, pro audio, coding, 3D, AI lab — add repos; have an agent refresh this page when <code>config/master.yaml</code> changes.</p>
+          </div>
+          <div class="card">
+            <h2>Contribute</h2>
+            <p>Issues and Discussions welcome. Small PRs for concrete improvements — open a thread first for big direction changes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <footer>
+    <p>
+      Hero photograph:
+      <a href="https://www.pexels.com/photo/person-holding-blacksmith-hammer-7688334/" rel="noopener noreferrer">Pexels</a>
+      (royalty-free stock). WC3 / Horde theming is fan flavor only; this site is not affiliated with Blizzard.
+    </p>
+  </footer>
+</body>
+</html>
