@@ -1,28 +1,49 @@
 /**
- * devops-for-the-horde — shared design tokens (README-adjacent site + minicons).
+ * devops-for-the-horde — design tokens (site + minicons).
  */
 :root {
-  --horde: #1f6f4a;
+  /* Brand */
+  --horde: #1a5c3f;
   --horde-deep: #0f2d1f;
-  --horde-bright: #2dd48a;
-  --gold: #e8c547;
-  --gold-dim: rgba(232, 197, 71, 0.45);
-  --bg: #070a09;
-  --bg-elevated: #0d1411;
-  --glass: rgba(18, 24, 22, 0.55);
-  --glass-edge: rgba(255, 255, 255, 0.12);
-  --text: #e9f2ed;
-  --muted: rgba(233, 242, 237, 0.72);
+  --horde-bright: #3ee8a3;
+  --horde-muted: rgba(62, 232, 163, 0.22);
+
+  --gold: #d4b84a;
+  --gold-dim: rgba(212, 184, 74, 0.4);
+
+  /* Surfaces — slightly lifted from pure black for less “flat mud” */
+  --bg: #0a0e0d;
+  --bg-elevated: #0f1513;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-hover: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --glass: rgba(16, 22, 20, 0.62);
+  --glass-edge: rgba(255, 255, 255, 0.1);
+
+  --text: #eef5f1;
+  --text-secondary: rgba(238, 245, 241, 0.78);
+  --muted: rgba(238, 245, 241, 0.58);
+
   --clear-bg: #e9f2ed;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.45);
+
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--horde-bright);
 
   /**
-   * Typography: readable UI sans + one serif accent + mono for code/labels.
-   * - Plus Jakarta Sans: screen-first geometric sans (body, nav, headings, buttons).
-   * - Instrument Serif: italic accent only (hero tagline, occasional emphasis).
-   * - JetBrains Mono: paths, labels, badges, code.
+   * Typography
+   * - Plus Jakarta Sans: UI + body
+   * - Instrument Serif: italic accent
+   * - JetBrains Mono: code + labels
    */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-flair: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -30,4 +51,8 @@
   --font-ui: var(--font-sans);
   --font-body: var(--font-sans);
   --font-headline: var(--font-sans);
+
+  --text-body: 1.0625rem;
+  --leading-body: 1.7;
+  --leading-tight: 1.2;
 }
