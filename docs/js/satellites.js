@@ -23,7 +23,7 @@ function renderList(manifest) {
     const li = document.createElement("li");
     li.className = "repo-list__empty";
     li.textContent =
-      "No external repos in the manifest yet. Mac → NixOS inventory and the Nix flake umbrella already live in this repository (see README). Add optional links under repositories in config/master.yaml when you want to surface other projects here.";
+      "No repos listed yet — add entries under repositories in config/master.yaml when you have something to link.";
     ul.appendChild(li);
     if (status) status.hidden = true;
     return;
