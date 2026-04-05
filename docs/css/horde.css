@@ -18,14 +18,55 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
-/* Full-viewport art layer: stays fixed while page scrolls (main/footer paint over it) */
+@supports (height: 100dvh) {
+  body {
+    min-height: 100dvh;
+  }
+}
+
+/*
+ * Hero art: always preserve aspect ratio (never stretch).
+ * - Default: cover + focal point for desktop / landscape.
+ * - Portrait phones: height-first scaling (auto 100%) so tall screens keep vertical
+ *   composition of the artwork instead of only zooming to width.
+ * - Near-square: cover with a centered focal point tuned for 1:1-ish frames.
+ */
 .page-bg {
+  --hero-art: url("../assets/hero-horde-peons.jpg");
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url("../assets/hero-horde-peons.jpg") center 36% / cover no-repeat;
+  background-color: var(--bg);
+  background-image: var(--hero-art);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 36%;
   pointer-events: none;
   transform: translateZ(0);
+}
+
+/* Square-ish viewports (tablets, foldables, 1:1 windows) — balanced crop */
+@media (min-aspect-ratio: 0.92) and (max-aspect-ratio: 1.08) {
+  .page-bg {
+    background-size: cover;
+    background-position: center 40%;
+  }
+}
+
+/* Tall portrait: scale by height so the illustration stays framed; crop sides, not top/bottom */
+@media (max-width: 900px) and (orientation: portrait) and (max-aspect-ratio: 0.92) {
+  .page-bg {
+    background-size: auto 100%;
+    background-position: center 34%;
+  }
+}
+
+/* Short landscape phones / small landscape windows — favor middle of the frame */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 520px) {
+  .page-bg {
+    background-size: cover;
+    background-position: center 42%;
+  }
 }
 
 a {
@@ -163,6 +204,12 @@ a.btn {
   background: transparent;
 }
 
+@supports (height: 100dvh) {
+  .hero-showcase {
+    min-height: min(92dvh, 960px);
+  }
+}
+
 /* Light wash: keep upper/mid hero clear; darken only near the fold */
 .hero-showcase__veil {
   position: absolute;
@@ -231,10 +278,6 @@ a.btn {
     min-height: min(88vh, 820px);
   }
 
-  .page-bg {
-    background-position: center 28%;
-  }
-
   .hero-showcase__veil {
     background: linear-gradient(
       180deg,
@@ -255,6 +298,14 @@ a.btn {
   .hero-showcase__panel {
     max-width: none;
     margin-inline-start: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  @supports (height: 100dvh) {
+    .hero-showcase {
+      min-height: min(88dvh, 820px);
+    }
   }
 }
 

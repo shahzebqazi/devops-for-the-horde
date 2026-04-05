@@ -1,61 +1,98 @@
 # devops-for-the-horde
 
-> *“Work complete.”* — take a Mac from **zero to raid-ready** in minutes, not weekends.  
-> *“Something need doing?”* — open an [issue](https://github.com/shahzebqazi/devops-for-the-horde/issues) before a big direction change.
+<div align="center">
 
-**devops-for-the-horde** is the **central command post**: one **master config**, many **satellite repos** (apps, dotfiles, stacks), and **Cursor-first** workflows so you (and future agents) can evolve the base without losing the plot.
+<img src="https://raw.githubusercontent.com/shahzebqazi/devops-for-the-horde/main/docs/assets/logo-horde.png" alt="devops-for-the-horde logo" width="112" />
 
-| You are here | Role |
-|--------------|------|
-| This repo | **Orc burrow**: master config, site, and coordination docs |
-| Other repos | **Specialized units**: per-app automation, Nix/Homebrew slices, experiments |
+<p align="center">
+  <a href="https://github.com/shahzebqazi/devops-for-the-horde/actions/workflows/ci.yml"><img src="https://github.com/shahzebqazi/devops-for-the-horde/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
+  &nbsp;
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2dd48a?style=flat-square" alt="MIT License" /></a>
+  &nbsp;
+  <a href="https://sqazi.sh/devops-for-the-horde/"><img src="https://img.shields.io/badge/site-sqazi.sh-1f6f4a?style=flat-square" alt="GitHub Pages site" /></a>
+  &nbsp;
+  <a href="flake.nix"><img src="https://img.shields.io/badge/flake-nix-5277C3?logo=nixos&logoColor=white&style=flat-square" alt="Nix flake" /></a>
+</p>
 
-**Satellite repos** (see [`config/master.yaml`](config/master.yaml)) are listed on the site and in the manifest; the **Mac → NixOS bootstrap collector**, **flake umbrella**, and **`nix/install-all`** orchestration live **in this repository** ([`agent/mac-nixos-bootstrap/`](agent/mac-nixos-bootstrap/), [`flake.nix`](flake.nix), [`satellite-manifest.json`](satellite-manifest.json)).
+**Personal Mac bootstrap hub** — one manifest, a small site, and room for Nix + agents to stay in sync.
 
-**Contact:** [willy@iconoclastaud.io](mailto:willy@iconoclastaud.io)
+[Live site](https://sqazi.sh/devops-for-the-horde/) · [Issues](https://github.com/shahzebqazi/devops-for-the-horde/issues) · [Email](mailto:willy@iconoclastaud.io)
+
+<br/>
+
+</div>
+
+---
+
+> Take a Mac from **fresh install** to **actually productive** without losing the thread.  
+> Big direction change? Open an [**issue**](https://github.com/shahzebqazi/devops-for-the-horde/issues) first.
+
+<br/>
+
+## Contents
+
+- [What this is for](#what-this-is-for)
+- [How it fits together](#how-it-fits-together)
+- [Mac → NixOS bootstrap and Nix umbrella](#mac-nixos)
+- [Site (GitHub Pages)](#site-github-pages)
+- [Contribute](#contribute)
+- [License](#license)
 
 ---
 
 ## What this is for
 
-- **Bootstrap a Mac fast**: opinionated paths from fresh install → productive (tooling, defaults, verification).
-- **Personal domains** (expand as you add repos): general computing, game development, pro audio & music, coding, 3D, AI lab, and whatever the next expansion brings.
-- **Solo-first, fork-friendly**: you optimize for *your* machine; others can steal ideas and open issues.
+- **Bootstrap a Mac quickly** — opinionated paths from clean install → productive (tooling, defaults, checks you can repeat).
+- **Grow over time** — domains like computing, audio, coding, 3D, AI are yours to extend in [`config/master.yaml`](config/master.yaml).
+- **Solo-first, fork-friendly** — optimize for your machine; borrow ideas if something helps.
 
 ---
 
-## Horde ops (how it fits together)
+## How it fits together
 
-1. **`config/master.yaml`** — single source of truth for “what belongs in the horde” (repos, tiers, domains).
-2. **Satellite repos** — own their app-specific automation; this repo links and summarizes.
-3. **Cursor + agents** — use `AGENTS.md` and `.cursor/rules` so an agent can refresh README/site lists when you add or rename repos (*work work*—straight, repeatable sync; you stay in control; commits still go through you).
+| Piece | Role |
+| :--- | :--- |
+| **[`config/master.yaml`](config/master.yaml)** | What belongs in this hub and which external repos to list. |
+| **Linked repos** | Each repo owns its own automation; this one links and summarizes. |
+| **Cursor + agents** | [`AGENTS.md`](AGENTS.md) and [`.cursor/rules`](.cursor/rules) keep README and site lists honest when manifests change. |
 
-## Mac → NixOS bootstrap & Nix umbrella
+---
 
-- **Inventory + playbook workflow:** [`agent/mac-nixos-bootstrap/README.md`](agent/mac-nixos-bootstrap/README.md) — `collect-mac-state`, JSON schema, `make check`.
-- **Flakes:** `nix flake lock` once (commit **`flake.lock`**), then `nix develop`, `nix run .#` (runs **`horde-install-all`** — clones linked repos under **`SATELLITE_ROOT`**, defaulting to XDG state — see [`nix/README.md`](nix/README.md)). **Non-flake:** `nix-shell` via [`shell.nix`](shell.nix).
+<h2 id="mac-nixos">Mac → NixOS bootstrap and Nix umbrella</h2>
+
+| Topic | Where |
+| :--- | :--- |
+| **Inventory + playbook** | [`agent/mac-nixos-bootstrap/README.md`](agent/mac-nixos-bootstrap/README.md) — `collect-mac-state`, JSON schema, `make check`. |
+| **Flakes** | Run `nix flake lock` once, **commit [`flake.lock`](flake.lock)**, then `nix develop` and `nix run .#` (**`horde-install-all`** clones linked repos under **`SATELLITE_ROOT`** — defaults use XDG; see [`nix/README.md`](nix/README.md)). |
+| **Non-flake** | `nix-shell` via [`shell.nix`](shell.nix). |
 
 ---
 
 ## Site (GitHub Pages)
 
-- **Landing page**: [sqazi.sh/devops-for-the-horde](https://sqazi.sh/devops-for-the-horde/) (canonical; `*.github.io` redirects here).
-- **Hero & logo**: original AI-generated assets in `docs/assets/` (orc-peon coding horde theme). WC3 *flavor*, not Blizzard IP.
-- **Satellite list** on the site loads from **`docs/config/master.yaml`** (a copy of `config/master.yaml`). After editing the root manifest, run **`./scripts/sync-manifest.sh`** and commit so Pages serves the updated file.
+| | |
+| :--- | :--- |
+| **Canonical URL** | **[sqazi.sh/devops-for-the-horde](https://sqazi.sh/devops-for-the-horde/)** (`*.github.io` redirects here). |
+| **Manifest on Pages** | The repo list loads from **`docs/config/master.yaml`** (a copy of the root file). After edits, run **`./scripts/sync-manifest.sh`** and commit so the live site matches. |
+| **Assets** | Hero and logo live under `docs/assets/` (original AI art; theme only — not Blizzard IP). |
 
 ---
 
 ## Contribute
 
-- **Ideas & discussion**: [Issues](https://github.com/shahzebqazi/devops-for-the-horde/issues) and **GitHub Discussions** (enable under repo Settings → General if not on yet).
-- **Changes**: small PRs welcome; for large direction changes, open an issue first so we don’t collide builds.
+- **Ideas & discussion** — [Issues](https://github.com/shahzebqazi/devops-for-the-horde/issues); enable **Discussions** under repo **Settings → General** if you want threads.
+- **Pull requests** — small PRs welcome; for large changes, open an issue first so plans do not collide.
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see **[LICENSE](LICENSE)**.
 
 ---
 
-*For the Warchief of your own rig. Lok’tar.*
+<div align="center">
+
+<sub>Thanks for reading.</sub>
+
+</div>
