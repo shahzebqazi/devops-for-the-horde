@@ -4,6 +4,14 @@
 
 <img src="https://raw.githubusercontent.com/shahzebqazi/devops-for-the-horde/main/docs/assets/logo-horde.png" alt="devops-for-the-horde logo" width="112" />
 
+<br/><br/>
+
+<img src="https://raw.githubusercontent.com/shahzebqazi/devops-for-the-horde/main/docs/assets/hero-horde-peons.jpg" alt="Hero art: stylized orc peon workers at glowing terminals in a crowded coding hall — original AI art for this project." width="780" />
+
+<sub>Same artwork as the <a href="https://sqazi.sh/devops-for-the-horde/">live site</a> hero — theme only, not Blizzard IP.</sub>
+
+<br/><br/>
+
 <p align="center">
   <a href="https://github.com/shahzebqazi/devops-for-the-horde/actions/workflows/ci.yml"><img src="https://github.com/shahzebqazi/devops-for-the-horde/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
   &nbsp;
