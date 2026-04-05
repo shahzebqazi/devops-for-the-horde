@@ -22,3 +22,20 @@ jobs:
 
       - name: make check
         run: make check
+
+  # Validates `flake.nix` inputs resolve and outputs evaluate (separate from Python `make check`).
+  # Does not require a committed flake.lock; the lock is generated in CI for the check only.
+  # For reproducible local/team builds, run `nix flake lock` once and commit `flake.lock`.
+  nix-flake:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v30
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: nix flake lock + check
+        run: |
+          nix flake lock
+          nix flake check

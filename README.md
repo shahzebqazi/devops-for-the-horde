@@ -33,7 +33,7 @@
 ## Mac → NixOS bootstrap & Nix umbrella
 
 - **Inventory + playbook workflow:** [`agent/mac-nixos-bootstrap/README.md`](agent/mac-nixos-bootstrap/README.md) — `collect-mac-state`, JSON schema, `make check`.
-- **Flakes:** `nix flake lock` once, then `nix develop`, `nix run .#` (runs **`horde-install-all`** — clones satellites under `$SATELLITE_ROOT` and runs each `nix/install.sh`). **Non-flake:** `nix-shell` via [`shell.nix`](shell.nix).
+- **Flakes:** `nix flake lock` once (commit **`flake.lock`**), then `nix develop`, `nix run .#` (runs **`horde-install-all`** — clones linked repos under **`SATELLITE_ROOT`**, defaulting to XDG state — see [`nix/README.md`](nix/README.md)). **Non-flake:** `nix-shell` via [`shell.nix`](shell.nix).
 
 ---
 

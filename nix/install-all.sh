@@ -25,7 +25,9 @@ resolve_root() {
 
 ROOT="$(resolve_root)"
 MANIFEST="$ROOT/satellite-manifest.json"
-SATELLITE_ROOT="${SATELLITE_ROOT:-$HOME/Code}"
+# Default: XDG state dir — no ~/Code assumption (override with SATELLITE_ROOT).
+_default_sat_root="${XDG_STATE_HOME:-$HOME/.local/state}/devops-for-the-horde/linked-repos"
+SATELLITE_ROOT="${SATELLITE_ROOT:-$_default_sat_root}"
 CLONE_MISSING="${CLONE_MISSING:-1}"
 
 if [[ ! -f "$MANIFEST" ]]; then
@@ -34,7 +36,7 @@ if [[ ! -f "$MANIFEST" ]]; then
 fi
 
 if ! command -v jq &>/dev/null; then
-  echo "install-all: jq is required (install jq or use: nix run .#install-all)" >&2
+  echo "install-all: jq is required (install jq or use: nix run .#)" >&2
   exit 1
 fi
 

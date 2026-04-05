@@ -19,12 +19,12 @@
   --radius-sm: 10px;
 
   /**
-   * Typography theme: “Horde guild” — fun + professional, not a font salad.
-   * - Outfit: one rounded geometric sans for nav, body, headings, buttons (weights carry hierarchy).
-   * - Instrument Serif: italic flair only (hero tagline, pull quotes, footer sign-off).
-   * - JetBrains Mono: paths, labels, badges, code — signals “ops / terminal”.
+   * Typography: readable UI sans + one serif accent + mono for code/labels.
+   * - Plus Jakarta Sans: screen-first geometric sans (body, nav, headings, buttons).
+   * - Instrument Serif: italic accent only (hero tagline, occasional emphasis).
+   * - JetBrains Mono: paths, labels, badges, code.
    */
-  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-flair: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
   --font-ui: var(--font-sans);

@@ -23,6 +23,21 @@ The former **main-release** tooling now lives here:
 
 Do not re-register this hub as a **satellite** in `satellite-manifest.json` (no self-clone).
 
+### Playbook output location
+
+Prefer **`docs/nixos-bootstrap-playbook.md`** when the playbook should stay next to the **GitHub Pages** tree; repo root is fine for private drafts.
+
+### Homebrew vs Nix (agent policy)
+
+- A **brew graph** is the **dependency view** of what Homebrew installed: e.g. `brew deps --installed`, `brew leaves`, and formula/cask relationships. The collector captures **leaves / casks / taps** and optional **Brewfile** text in inventory JSON — that is the machine-readable input for migration planning.
+- **Default agent stance:** treat **Nix** as the **target** on NixOS (and prefer Nix on macOS when the user is migrating). Propose **Nix-native** equivalents and phased cutover; do **not** assume Homebrew stays forever.
+- **User override:** if the user says they want to **keep Homebrew** (or stay hybrid), **do not** “deprecate by default” — document both paths and respect their choice.
+- Use **`--redact`** when sharing inventories publicly; remind that redaction is **not** full anonymization.
+
+### Single hub for agent edits
+
+Treat **`devops-for-the-horde`** as the **canonical** repo for these workflows once **`main-release`** (or older clones) are retired — avoid duplicating agent policy across repos.
+
 ## Agent tone (peon cadence, subtle)
 
 *Warcraft III* peon voice lines are **flavor**, not spam. Use them as **internal rhythm** for agent behavior (see [Peon quotes on wiki.gg](https://warcraft.wiki.gg/wiki/Quotes_of_Warcraft_III/Orc_Horde#Peon)):

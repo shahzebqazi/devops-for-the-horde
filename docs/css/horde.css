@@ -15,6 +15,7 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.65;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 /* Full-viewport art layer: stays fixed while page scrolls (main/footer paint over it) */
@@ -22,7 +23,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url("../assets/hero-horde-peons.jpg") center 28% / cover no-repeat;
+  background: url("../assets/hero-horde-peons.jpg") center 36% / cover no-repeat;
   pointer-events: none;
   transform: translateZ(0);
 }
@@ -72,7 +73,7 @@ a.btn {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Light bar over hero art — keep the illustration visible */
+/* Light bar over hero — minimal tint so art stays visible */
 .site-header--on-hero {
   position: absolute;
   left: 0;
@@ -80,13 +81,13 @@ a.btn {
   top: 0;
   background: linear-gradient(
     to bottom,
-    rgba(7, 10, 9, 0.42) 0%,
-    rgba(7, 10, 9, 0.12) 65%,
+    rgba(7, 10, 9, 0.22) 0%,
+    rgba(7, 10, 9, 0.06) 55%,
     transparent 100%
   );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .brand {
@@ -162,7 +163,7 @@ a.btn {
   background: transparent;
 }
 
-/* Light vertical wash only — do not cover the whole illustration */
+/* Light wash: keep upper/mid hero clear; darken only near the fold */
 .hero-showcase__veil {
   position: absolute;
   inset: 0;
@@ -170,26 +171,26 @@ a.btn {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(7, 10, 9, 0.03) 0%,
-    transparent 45%,
-    rgba(7, 10, 9, 0.18) 78%,
-    rgba(7, 10, 9, 0.45) 100%
+    transparent 0%,
+    transparent 42%,
+    rgba(7, 10, 9, 0.08) 72%,
+    rgba(7, 10, 9, 0.28) 100%
   );
 }
 
-/* Gradient bridge: hero art → page background (main sits on solid --bg) */
+/* Short bridge into main — transition only at the bottom edge */
 .hero-showcase__bridge {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: min(32vh, 220px);
+  height: min(22vh, 160px);
   z-index: 2;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(7, 10, 9, 0.55) 55%,
+    rgba(7, 10, 9, 0.35) 70%,
     var(--bg) 100%
   );
 }
@@ -198,13 +199,31 @@ a.btn {
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 960px;
+  max-width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 5.5rem clamp(1.25rem, 4vw, 2rem) clamp(2.5rem, 5vw, 3.25rem);
+  padding: 5rem clamp(1.25rem, 4vw, 2rem) clamp(2rem, 4vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Wide screens: park copy on the right so the illustration reads on the left */
+@media (min-width: 900px) {
+  .hero-showcase__content {
+    align-items: flex-end;
+  }
 }
 
 .hero-showcase__panel {
+  width: 100%;
   max-width: 38rem;
+}
+
+@media (min-width: 900px) {
+  .hero-showcase__panel {
+    margin-inline-start: auto;
+    max-width: min(28rem, 42vw);
+  }
 }
 
 @media (max-width: 720px) {
@@ -213,28 +232,33 @@ a.btn {
   }
 
   .page-bg {
-    background-position: center 20%;
+    background-position: center 28%;
   }
 
   .hero-showcase__veil {
     background: linear-gradient(
       180deg,
-      rgba(7, 10, 9, 0.06) 0%,
-      transparent 35%,
-      rgba(7, 10, 9, 0.35) 100%
+      transparent 0%,
+      transparent 28%,
+      rgba(7, 10, 9, 0.12) 100%
     );
   }
 
   .hero-showcase__bridge {
-    height: min(38vh, 200px);
+    height: min(28vh, 180px);
+  }
+
+  .hero-showcase__content {
+    align-items: stretch;
   }
 
   .hero-showcase__panel {
     max-width: none;
+    margin-inline-start: 0;
   }
 }
 
-/* Hero: Outfit for copy; Instrument Serif only on accent + whisper em; mono for tech */
+/* Hero: Plus Jakarta Sans for copy; Instrument Serif on accent; mono for labels/code */
 .hero-showcase {
   color: #f4fbf7;
   font-family: var(--font-sans);
@@ -242,14 +266,26 @@ a.btn {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*
+ * Card stays light overall; a bottom-heavy scrim (this panel only) boosts contrast
+ * for lede + CTAs on bright areas of the artwork without fogging the full hero.
+ */
 .hero-showcase .hero-showcase__panel.glass {
-  background: rgba(7, 10, 9, 0.38);
-  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 10, 9, 0.78) 0%,
+      rgba(7, 10, 9, 0.38) 32%,
+      rgba(7, 10, 9, 0.1) 58%,
+      transparent 78%
+    ),
+    rgba(7, 10, 9, 0.14);
+  border-color: rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+    0 16px 48px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px) saturate(125%);
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
 }
 
 .hero-showcase__intro {
@@ -307,8 +343,8 @@ a.btn {
 .hero-showcase .hero-title__wordmark {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(1.65rem, 4.2vw, 2.85rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(1.6rem, 4vw, 2.65rem);
+  letter-spacing: -0.035em;
   line-height: 1.05;
 }
 
@@ -323,13 +359,13 @@ a.btn {
 
 .hero-showcase .lede {
   font-family: var(--font-sans);
-  font-size: 1.07rem;
+  font-size: clamp(1rem, 1.05rem + 0.2vw, 1.08rem);
   font-weight: 400;
   margin-top: 1.1rem;
   color: rgba(248, 252, 250, 0.96);
-  line-height: 1.75;
+  line-height: 1.72;
   max-width: 46rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.008em;
 }
 
 .hero-showcase .lede strong {
@@ -417,7 +453,11 @@ a.btn {
 }
 
 .panel {
-  padding: clamp(1.5rem, 4vw, 2.25rem);
+  padding: clamp(1.35rem, 3.5vw, 2rem);
+}
+
+.hero-showcase .panel {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .badge {
