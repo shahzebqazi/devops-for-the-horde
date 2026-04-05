@@ -12,4 +12,5 @@ globs:
 - **Central repo**: `config/master.yaml` is the manifest; keep `README.md` and `docs/index.html` aligned when repos or domains change.
 - **Visuals**: Glass-morphism (blur, translucent panels, subtle borders), dark base, Horde green accents — inspired by modern “glass” UI; do not copy proprietary product pixels.
 - **IP**: Warcraft flavor in text only; **no** Blizzard game assets or ripped art.
-- **Imagery**: Royalty-free stock only; keep attribution in `docs/index.html` when required.
+- **Imagery**: AI originals under `docs/assets/` (or stock with attribution if swapped).
+- **Agent tone**: Subtle WC3 peon cadence—*something need doing?* before speculative edits; *work work* for manifest sync; *work complete* when README + site match `master.yaml` (see `AGENTS.md`).

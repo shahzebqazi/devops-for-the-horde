@@ -1,6 +1,7 @@
 # devops-for-the-horde
 
-> *“Work complete.”* — take a Mac from **zero to raid-ready** in minutes, not weekends.
+> *“Work complete.”* — take a Mac from **zero to raid-ready** in minutes, not weekends.  
+> *“Something need doing?”* — open an [issue](https://github.com/shahzebqazi/devops-for-the-horde/issues) before a big direction change.
 
 **devops-for-the-horde** is the **central command post**: one **master config**, many **satellite repos** (apps, dotfiles, stacks), and **Cursor-first** workflows so you (and future agents) can evolve the base without losing the plot.
 
@@ -25,7 +26,7 @@
 
 1. **`config/master.yaml`** — single source of truth for “what belongs in the horde” (repos, tiers, domains).
 2. **Satellite repos** — own their app-specific automation; this repo links and summarizes.
-3. **Cursor + agents** — use `AGENTS.md` and `.cursor/rules` so an agent can refresh README/site lists when you add or rename repos (you stay in control; commits still go through you).
+3. **Cursor + agents** — use `AGENTS.md` and `.cursor/rules` so an agent can refresh README/site lists when you add or rename repos (*work work*—straight, repeatable sync; you stay in control; commits still go through you).
 
 ---
 
