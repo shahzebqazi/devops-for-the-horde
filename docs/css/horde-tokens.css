@@ -17,12 +17,17 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
-  /* ≥4 families: Outfit (chrome), Syne (headlines), Inter (body), JetBrains Mono (tech), + Instrument Serif + Fraunces */
-  --font-ui: "Outfit", system-ui, sans-serif;
-  --font-headline: "Syne", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /**
+   * Typography theme: “Horde guild” — fun + professional, not a font salad.
+   * - Outfit: one rounded geometric sans for nav, body, headings, buttons (weights carry hierarchy).
+   * - Instrument Serif: italic flair only (hero tagline, pull quotes, footer sign-off).
+   * - JetBrains Mono: paths, labels, badges, code — signals “ops / terminal”.
+   */
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-flair: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
-  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --font-whisper: "Fraunces", "Instrument Serif", Georgia, serif;
-  --font-sans: var(--font-body);
+  --font-ui: var(--font-sans);
+  --font-body: var(--font-sans);
+  --font-headline: var(--font-sans);
 }
