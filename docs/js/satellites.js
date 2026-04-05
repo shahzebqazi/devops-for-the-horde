@@ -1,5 +1,5 @@
 /**
- * Hydrates #satellite-list from docs/config/master.yaml (synced copy of repo root manifest).
+ * Hydrates #repo-list from docs/config/master.yaml (synced copy of repo root manifest).
  * Uses esm.sh yaml parser — no build step. Agents: run scripts/sync-manifest.sh after editing config/master.yaml.
  */
 import { parse } from "https://esm.sh/yaml@2.3.4";
@@ -10,8 +10,8 @@ function domainLabel(domains, id) {
 }
 
 function renderList(manifest) {
-  const ul = document.getElementById("satellite-list");
-  const status = document.getElementById("satellite-list-status");
+  const ul = document.getElementById("repo-list");
+  const status = document.getElementById("repo-list-status");
   if (!ul) return;
 
   const repos = Array.isArray(manifest.repositories) ? manifest.repositories : [];
@@ -21,8 +21,9 @@ function renderList(manifest) {
 
   if (repos.length === 0) {
     const li = document.createElement("li");
-    li.className = "satellite-list__empty";
-    li.textContent = "No satellite repos registered yet — add entries under repositories in config/master.yaml.";
+    li.className = "repo-list__empty";
+    li.textContent =
+      "No repos listed yet — add entries under repositories in config/master.yaml when you have something to link.";
     ul.appendChild(li);
     if (status) status.hidden = true;
     return;
@@ -30,7 +31,7 @@ function renderList(manifest) {
 
   for (const repo of repos) {
     const li = document.createElement("li");
-    li.className = "satellite-list__item";
+    li.className = "repo-list__item";
 
     const title = document.createElement("strong");
     const link = document.createElement("a");
@@ -48,7 +49,7 @@ function renderList(manifest) {
 
     if (Array.isArray(repo.domains) && repo.domains.length > 0) {
       const meta = document.createElement("span");
-      meta.className = "satellite-list__domains";
+      meta.className = "repo-list__domains";
       const labels = repo.domains.map((id) => domainLabel(domains, id)).join(" · ");
       meta.textContent = ` (${labels})`;
       li.appendChild(meta);
@@ -58,7 +59,7 @@ function renderList(manifest) {
   }
 
   if (status) {
-    status.textContent = `${repos.length} unit${repos.length === 1 ? "" : "s"} from manifest`;
+    status.textContent = `${repos.length} repo${repos.length === 1 ? "" : "s"} from manifest`;
     status.hidden = false;
   }
 }
@@ -66,7 +67,7 @@ function renderList(manifest) {
 async function main() {
   const url = new URL("config/master.yaml", window.location.href).href;
 
-  const status = document.getElementById("satellite-list-status");
+  const status = document.getElementById("repo-list-status");
   try {
     const res = await fetch(url, { cache: "no-cache" });
     if (!res.ok) throw new Error(`${res.status}`);
@@ -74,20 +75,20 @@ async function main() {
     const manifest = parse(text);
     renderList(manifest);
   } catch (e) {
-    const ul = document.getElementById("satellite-list");
+    const ul = document.getElementById("repo-list");
     if (ul) {
       ul.innerHTML = "";
       const li = document.createElement("li");
-      li.className = "satellite-list__empty";
+      li.className = "repo-list__empty";
       li.textContent =
-        "Could not load docs/config/master.yaml (offline or blocked fetch). See README for sync instructions.";
+        "Could not load docs/config/master.yaml (offline or blocked fetch). See the README for sync instructions.";
       ul.appendChild(li);
     }
     if (status) {
       status.textContent = "Manifest unavailable";
       status.hidden = false;
     }
-    console.warn("[satellites]", e);
+    console.warn("[repos manifest]", e);
   }
 }
 

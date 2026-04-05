@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Dev preview — site &amp; assets</title>
+  <meta name="description" content="Internal preview: GitHub Pages notes and minicon export strip. Not linked from the main site." />
+  <link rel="icon" type="image/png" href="../assets/logo-horde.png" sizes="512x512" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/horde.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" style="position: relative">
+    <a class="brand" href="../">
+      <img src="../assets/logo-horde.png" width="36" height="36" alt="" />
+      <span class="visually-hidden">Main site</span>
+    </a>
+    <nav class="nav-links" aria-label="Dev preview">
+      <a href="../">Main site</a>
+      <a href="#site">Site</a>
+      <a href="#assets">Assets</a>
+    </nav>
+  </header>
+
+  <main id="main" style="padding-top: 1.5rem">
+    <p class="section__label" style="margin-top: 0">Dev build</p>
+    <p style="color: var(--muted); margin: 0 0 2rem; max-width: 60ch">
+      This page is for previewing Pages URL notes and the minicon PNG strip. It is intentionally not linked from the public landing page.
+    </p>
+
+    <section class="section" id="site" aria-labelledby="site-heading">
+      <p class="section__label">Pages</p>
+      <h2 id="site-heading">Site (GitHub Pages)</h2>
+      <p>
+        Canonical URL: <a href="https://sqazi.sh/devops-for-the-horde/">sqazi.sh/devops-for-the-horde</a>
+        (<code>*.github.io</code> redirects here). Hero and logo live under <code>docs/assets/</code>.
+      </p>
+    </section>
+
+    <div class="divider" role="presentation"></div>
+
+    <section class="section" id="assets" aria-labelledby="assets-heading">
+      <p class="section__label">Minicons</p>
+      <h2 id="assets-heading">HTML/CSS minicons &amp; PNG export</h2>
+      <p>
+        Vector sources live in <code>docs/assets/minicons/*.html</code> with shared <code>docs/css/minicons.css</code>
+        (gold border, corner flags, palette). Kotlin + Playwright in <code>tools/minicon-export</code> rasterizes each
+        to <code>docs/assets/minicons/png/</code> — <strong>transparent</strong>, <strong>clear</strong> (mist background), and <strong>black</strong> variants.
+      </p>
+      <div class="minicon-strip" aria-hidden="true">
+        <figure><img src="../assets/minicons/png/config-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Config</figcaption></figure>
+        <figure><img src="../assets/minicons/png/agent-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Agent</figcaption></figure>
+        <figure><img src="../assets/minicons/png/mac-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Mac</figcaption></figure>
+        <figure><img src="../assets/minicons/png/domain-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Domain</figcaption></figure>
+        <figure><img src="../assets/minicons/png/repo-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Repo</figcaption></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dev-only preview. <a href="../">Back to main site</a></p>
+  </footer>
+</body>
+</html>

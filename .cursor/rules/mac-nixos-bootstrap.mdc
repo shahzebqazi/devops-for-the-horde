@@ -1,0 +1,19 @@
+---
+description: Mac → NixOS bootstrap playbook — use inventory JSON + INSTRUCTIONS to generate operator playbooks
+globs: agent/mac-nixos-bootstrap/**,**/nixos-bootstrap-playbook.md,**/machine-inventory*.json
+alwaysApply: false
+---
+
+# Mac → NixOS bootstrap playbook (Cursor)
+
+When this rule applies:
+
+1. Prefer **`agent/mac-nixos-bootstrap/INSTRUCTIONS.md`** as the full agent policy for generating or editing playbooks.
+2. **Inputs:** latest `machine-inventory-*.json` from `collect-mac-state.py` (under `agent/mac-nixos-bootstrap/artifacts/` by default); optional repo `programs-and-dependencies.md`.
+3. **Output:** Markdown playbook following **`agent/mac-nixos-bootstrap/playbook-template.md`**, typically saved as `nixos-bootstrap-playbook.md` at repo root or under **`docs/`** (this hub repo uses `docs/` for GitHub Pages — prefer `docs/` when the playbook should ship with the site).
+4. Focus on **phased operations**, **package mapping**, **verification**, and **rollback** — not a giant pasted `configuration.nix` unless requested.
+5. For privacy when sharing: use `collect-mac-state.py --redact` (hostname + hardware reduced to coarse fields; `uname`, paths, and Brewfile may still identify the machine—see `INSTRUCTIONS.md` non-goals; not a compliance guarantee). Use `meta.inventoryDigest` to compare brew *intent* across runs.
+
+To refresh inventory on macOS: `./agent/mac-nixos-bootstrap/collect-mac-state.sh`
+
+Multi-tool runners (Codex, Claude Code, OpenCode, etc.) are described in `agent/mac-nixos-bootstrap/adapters.md`.

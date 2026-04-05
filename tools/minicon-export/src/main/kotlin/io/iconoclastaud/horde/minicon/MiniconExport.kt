@@ -42,7 +42,7 @@ fun main() {
             for (bg in listOf("transparent", "clear", "black")) {
                 page.navigate(url)
                 page.evaluate("document.documentElement.setAttribute('data-export-bg', '$bg')")
-                page.waitForTimeout(200)
+                page.waitForTimeout(200.0)
                 val target = Paths.get(outDir.absolutePath, "$base-$bg.png")
                 val opts =
                     Page.ScreenshotOptions()
@@ -63,7 +63,7 @@ private fun findRepoRoot(): File {
         if (candidate.isDirectory) {
             return dir
         }
-        dir = dir.parentFile ?: break
+        dir = dir.parentFile ?: error("Could not find repo root containing docs/assets/minicons (from ${System.getProperty("user.dir")})")
     }
     error("Could not find repo root containing docs/assets/minicons (from ${System.getProperty("user.dir")})")
 }

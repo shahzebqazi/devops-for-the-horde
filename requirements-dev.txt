@@ -1,0 +1,2 @@
+# Dev / CI: JSON Schema validation for machine inventory
+jsonschema>=4.22.0,<5

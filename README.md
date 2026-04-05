@@ -10,9 +10,7 @@
 | This repo | **Orc burrow**: master config, site, and coordination docs |
 | Other repos | **Specialized units**: per-app automation, Nix/Homebrew slices, experiments |
 
-**Satellite repos** (see [`config/master.yaml`](config/master.yaml)):
-
-- **[main-release](https://github.com/shahzebqazi/main-release)** — Mac → NixOS bootstrap inventory, flake umbrella, and satellite install orchestration.
+**Satellite repos** (see [`config/master.yaml`](config/master.yaml)) are listed on the site and in the manifest; the **Mac → NixOS bootstrap collector**, **flake umbrella**, and **`nix/install-all`** orchestration live **in this repository** ([`agent/mac-nixos-bootstrap/`](agent/mac-nixos-bootstrap/), [`flake.nix`](flake.nix), [`satellite-manifest.json`](satellite-manifest.json)).
 
 **Contact:** [willy@iconoclastaud.io](mailto:willy@iconoclastaud.io)
 
@@ -31,6 +29,11 @@
 1. **`config/master.yaml`** — single source of truth for “what belongs in the horde” (repos, tiers, domains).
 2. **Satellite repos** — own their app-specific automation; this repo links and summarizes.
 3. **Cursor + agents** — use `AGENTS.md` and `.cursor/rules` so an agent can refresh README/site lists when you add or rename repos (*work work*—straight, repeatable sync; you stay in control; commits still go through you).
+
+## Mac → NixOS bootstrap & Nix umbrella
+
+- **Inventory + playbook workflow:** [`agent/mac-nixos-bootstrap/README.md`](agent/mac-nixos-bootstrap/README.md) — `collect-mac-state`, JSON schema, `make check`.
+- **Flakes:** `nix flake lock` once, then `nix develop`, `nix run .#` (runs **`horde-install-all`** — clones satellites under `$SATELLITE_ROOT` and runs each `nix/install.sh`). **Non-flake:** `nix-shell` via [`shell.nix`](shell.nix).
 
 ---
 

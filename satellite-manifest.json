@@ -1,0 +1,45 @@
+{
+  "$schema": "./nix/satellite-manifest.schema.json",
+  "satellites": [
+    {
+      "name": "ai-agent-leaderkey",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-leaderkey.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-dotfiles-macos-linux",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-dotfiles-macos-linux.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-macbook-config",
+      "gitUrl": "https://github.com/shahzebqazi/ai-macbook-config.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-aerospace",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-aerospace.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-hiddenbar",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-hiddenbar.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-borders",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-borders.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-ableton",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-ableton.git",
+      "installScript": "nix/install.sh"
+    },
+    {
+      "name": "ai-agent-cursor-config",
+      "gitUrl": "https://github.com/shahzebqazi/ai-agent-cursor-config.git",
+      "installScript": "nix/install.sh"
+    }
+  ]
+}

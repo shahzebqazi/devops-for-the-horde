@@ -6,3 +6,11 @@
 # Gradle (minicon-export tool)
 tools/minicon-export/.gradle/
 tools/minicon-export/build/
+
+# Nix build outputs
+result
+result-*
+
+# collect-mac-state (local machine snapshots)
+agent/mac-nixos-bootstrap/artifacts/
+agent/mac-nixos-bootstrap/debug/

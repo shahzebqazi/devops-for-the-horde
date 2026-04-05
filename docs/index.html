@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>devops-for-the-horde</title>
-  <meta name="description" content="Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows." />
+  <meta name="description" content="A personal Mac bootstrap hub — master config, linked repos, and Cursor-friendly docs." />
   <link rel="canonical" href="https://sqazi.sh/devops-for-the-horde/" />
   <link rel="icon" type="image/png" href="assets/logo-horde.png" sizes="512x512" />
   <link rel="apple-touch-icon" href="assets/logo-horde.png" />
   <meta property="og:title" content="devops-for-the-horde" />
-  <meta property="og:description" content="Central Mac bootstrap hub — master config, satellite repos, Cursor-first workflows." />
+  <meta property="og:description" content="A personal Mac bootstrap hub — master config, linked repos, and Cursor-friendly docs." />
   <meta property="og:image" content="https://sqazi.sh/devops-for-the-horde/assets/hero-horde-peons.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" as="image" href="assets/hero-horde-peons.jpg" />
@@ -33,14 +33,12 @@
     <header class="site-header site-header--on-hero">
       <a class="brand" href="https://sqazi.sh/devops-for-the-horde/">
         <img src="assets/logo-horde.png" width="36" height="36" alt="" />
-        devops-for-the-horde
+        <span class="visually-hidden">Home</span>
       </a>
       <nav class="nav-links" aria-label="Page">
         <a href="#overview">Overview</a>
-        <a href="#horde-ops">Horde ops</a>
-        <a href="#satellites">Satellites</a>
-        <a href="#site">Site</a>
-        <a href="#assets">Assets</a>
+        <a href="#cursor-agents">Cursor Agents</a>
+        <a href="#repos">Repos</a>
         <a href="#contribute">Contribute</a>
       </nav>
     </header>
@@ -58,22 +56,22 @@
               <img class="hero-showcase__chibi" src="assets/peon-chibi-d.svg" width="52" height="52" alt="" decoding="async" />
             </div>
             <div class="hero-showcase__intro-text">
-              <div class="badge" title="Ready to work.">
+              <div class="badge" title="Mac setup, documented.">
                 <img src="assets/logo-horde.png" alt="" width="18" height="18" />
-                Lok’tar — Mac bootstrap
+                Mac bootstrap
               </div>
             </div>
           </div>
           <h1 id="hero-title">
             <span class="hero-title__wordmark">devops-for-the-horde</span>
-            <span class="accent">zero → raid-ready</span>
+            <span class="accent">from zero to ready</span>
           </h1>
           <p class="lede">
-            Central command post for a Mac that goes from <strong>fresh install</strong> to <strong>fully productive</strong> fast:
-            one master config, satellite repos for apps and stacks, and Cursor-first workflows so agents can help keep docs honest.
+            This is a home base for taking a Mac from a <strong>clean install</strong> to something that <strong>feels like yours</strong> quickly:
+            one master config, room for other repos to plug in, and notes that play nicely with Cursor so you are not the only one keeping the README honest.
           </p>
           <p class="whisper">
-            <span class="whisper__label">Agents:</span> start from <code>config/master.yaml</code>—<em>something need doing?</em>
+            <span class="whisper__label">Tip:</span> if you use agents, point them at <code>config/master.yaml</code> first.
           </p>
           <div class="cta">
             <a class="btn btn--primary" href="https://github.com/shahzebqazi/devops-for-the-horde">View repository</a>
@@ -87,101 +85,70 @@
   <main id="main">
     <section class="section" id="overview" aria-labelledby="overview-heading">
       <p class="section__label">Map</p>
-      <h2 id="overview-heading">Where you are</h2>
+      <h2 id="overview-heading">What lives here</h2>
       <div class="grid-2">
         <div class="card">
-          <h3>This repo</h3>
-          <p><strong>Orc burrow</strong> — master config, GitHub Pages site, coordination docs.</p>
+          <h3>This repository</h3>
+          <p>Master config, the GitHub Pages site, and coordination docs — the place that ties the rest together.</p>
         </div>
         <div class="card">
-          <h3>Other repos</h3>
-          <p><strong>Specialized units</strong> — per-app automation, Nix/Homebrew slices, experiments.</p>
+          <h3>Other repositories</h3>
+          <p>Smaller, focused repos for apps, dotfiles, Nix slices, and experiments — linked from the manifest when you add them.</p>
         </div>
       </div>
     </section>
 
     <section class="section" id="what-for" aria-labelledby="what-for-heading">
-      <p class="section__label">Mission</p>
-      <h2 id="what-for-heading">What this is for</h2>
+      <p class="section__label">Why</p>
+      <h2 id="what-for-heading">What it is for</h2>
       <ul>
-        <li><strong>Bootstrap a Mac fast</strong> — paths from fresh install → productive (tooling, defaults, verification).</li>
-        <li><strong>Personal domains</strong> — computing, game dev, pro audio &amp; music, coding, 3D, AI lab (expand as you add repos).</li>
-        <li><strong>Solo-first, fork-friendly</strong> — optimize for your machine; others can borrow ideas and open issues.</li>
+        <li><strong>Get productive sooner</strong> — a straight path from “new machine” to “I can actually work” (tools, defaults, a few checks).</li>
+        <li><strong>Personal by design</strong> — domains like computing, audio, coding, 3D, and AI are placeholders you can grow over time.</li>
+        <li><strong>Friendly to forks</strong> — optimize for your setup; borrow ideas if something helps.</li>
       </ul>
     </section>
 
-    <section class="section" id="horde-ops" aria-labelledby="horde-ops-heading">
+    <section class="section" id="cursor-agents" aria-labelledby="cursor-agents-heading">
       <p class="section__label">Workflow</p>
-      <h2 id="horde-ops-heading">Horde ops</h2>
+      <h2 id="cursor-agents-heading">Cursor Agents</h2>
       <ol>
-        <li><code>config/master.yaml</code> — single source of truth for what belongs in the horde.</li>
-        <li><strong>Satellite repos</strong> — own app-specific automation; this repo links and summarizes.</li>
-        <li><strong>Cursor + agents</strong> — <code>AGENTS.md</code> and <code>.cursor/rules</code> for repeatable README/site sync (<em>work work</em>).</li>
+        <li><code>config/master.yaml</code> — what belongs in this “horde” and which external repos matter.</li>
+        <li><strong>Linked repos</strong> — each repo owns its own automation; this one links and summarizes.</li>
+        <li><strong>Cursor</strong> — <code>AGENTS.md</code> and <code>.cursor/rules</code> so updates to the README and site can stay in sync without guesswork.</li>
       </ol>
     </section>
 
-    <section class="section" id="satellites" aria-labelledby="satellites-heading">
-      <p class="section__label">Units</p>
-      <h2 id="satellites-heading">Satellite repos</h2>
+    <section class="section" id="repos" aria-labelledby="repos-heading">
+      <p class="section__label">Manifest</p>
+      <h2 id="repos-heading">Repos</h2>
       <p>
-        Loaded from <code>config/master.yaml</code> (mirrored under <code>docs/config/</code> for this site). Add a repo there and run
-        <code>scripts/sync-manifest.sh</code> — or let an agent sync — and this list updates on refresh.
+        The list below is loaded from <code>config/master.yaml</code> (copied to <code>docs/config/</code> for the site). After you edit the file, run
+        <code>scripts/sync-manifest.sh</code> and commit so visitors see the same thing you see locally.
       </p>
-      <p id="satellite-list-status" class="satellite-list__status" hidden aria-live="polite"></p>
-      <ul id="satellite-list" class="satellite-list">
-        <li class="satellite-list__loading">Loading units…</li>
+      <p id="repo-list-status" class="repo-list__status" hidden aria-live="polite"></p>
+      <ul id="repo-list" class="repo-list">
+        <li class="repo-list__loading">Loading…</li>
       </ul>
       <noscript>
         <ul>
-          <li>
-            <a href="https://github.com/shahzebqazi/main-release"><strong>main-release</strong></a>
-            — enable JavaScript for the full manifest-driven list.
-          </li>
+          <li class="repo-list__empty">Enable JavaScript to load the manifest-driven list, or open <code>config/master.yaml</code> in the repo.</li>
         </ul>
       </noscript>
     </section>
 
-    <section class="section" id="site" aria-labelledby="site-heading">
-      <p class="section__label">Pages</p>
-      <h2 id="site-heading">Site (GitHub Pages)</h2>
-      <p>
-        Canonical URL: <a href="https://sqazi.sh/devops-for-the-horde/">sqazi.sh/devops-for-the-horde</a>
-        (<code>*.github.io</code> redirects here). Hero &amp; logo are AI-generated originals in <code>docs/assets/</code>.
-      </p>
-    </section>
-
-    <div class="divider" role="presentation"></div>
-
-    <section class="section" id="assets" aria-labelledby="assets-heading">
-      <p class="section__label">Minicons</p>
-      <h2 id="assets-heading">HTML/CSS minicons &amp; PNG export</h2>
-      <p>
-        Vector sources live in <code>docs/assets/minicons/*.html</code> with shared <code>docs/css/minicons.css</code>
-        (gold border, corner flags, Horde palette). Kotlin + Playwright in <code>tools/minicon-export</code> rasterizes each
-        to <code>docs/assets/minicons/png/</code> — <strong>transparent</strong>, <strong>clear</strong> (mist background), and <strong>black</strong> variants.
-      </p>
-      <div class="minicon-strip" aria-hidden="true">
-        <figure><img src="assets/minicons/png/config-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Config</figcaption></figure>
-        <figure><img src="assets/minicons/png/agent-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Agent</figcaption></figure>
-        <figure><img src="assets/minicons/png/mac-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Mac</figcaption></figure>
-        <figure><img src="assets/minicons/png/domain-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Domain</figcaption></figure>
-        <figure><img src="assets/minicons/png/repo-transparent.png" alt="" width="64" height="64" loading="lazy" /><figcaption>Repo</figcaption></figure>
-      </div>
-    </section>
-
     <section class="section" id="contribute" aria-labelledby="contribute-heading">
-      <p class="section__label">Ship it</p>
+      <p class="section__label">Contribute</p>
       <h2 id="contribute-heading">Contribute</h2>
       <div class="grid-2">
         <div class="card">
-          <h3>Domains</h3>
+          <h3>Small changes</h3>
           <p>
-            Edit <code>config/master.yaml</code>, run <code>scripts/sync-manifest.sh</code>, commit — the Satellites list hydrates from the mirrored file. <em>Work work.</em>
+            Edit <code>config/master.yaml</code>, run <code>scripts/sync-manifest.sh</code>, and commit. The repo list on this page updates from the same file.
           </p>
         </div>
         <div class="card">
-          <h3>Community</h3>
-          <p><em>Be happy to</em> review issues and small PRs. Big swings? Open a thread first—<em>why not?</em></p>
+          <h3>Conversation first</h3>
+          <p>Issues and small pull requests are welcome. For bigger direction changes, open an issue so we can align before a large diff.</p>
         </div>
       </div>
     </section>
@@ -196,11 +163,11 @@
   <script type="module" src="js/satellites.js"></script>
   <footer class="site-footer">
     <p>
-      Hero &amp; logo: original AI-generated imagery (orc-peon coding horde theme; not affiliated with Blizzard).
-      · Chibi mark: original SVG mascot (not WC3 rips — we skip embedded Blizzard GIFs for IP safety).
-      · Contact: <a href="mailto:willy@iconoclastaud.io">willy@iconoclastaud.io</a>
+      Hero and logo: original AI-generated art (coding horde theme; not affiliated with Blizzard).
+      Chibi marks: original SVG mascots.
+      Contact: <a href="mailto:willy@iconoclastaud.io">willy@iconoclastaud.io</a>
     </p>
-    <p><em>For the Warchief of your own rig. Lok’tar.</em></p>
+    <p>Thanks for stopping by.</p>
   </footer>
 </body>
 </html>

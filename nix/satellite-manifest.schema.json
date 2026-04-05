@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shahzebqazi/devops-for-the-horde/satellite-manifest.schema.json",
+  "title": "Satellite manifest",
+  "type": "object",
+  "required": ["satellites"],
+  "properties": {
+    "satellites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "gitUrl"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Directory name under SATELLITE_ROOT"
+          },
+          "gitUrl": { "type": "string", "format": "uri" },
+          "installScript": {
+            "type": "string",
+            "default": "nix/install.sh",
+            "description": "Path relative to the satellite repo"
+          }
+        }
+      }
+    }
+  }
+}

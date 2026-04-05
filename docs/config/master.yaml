@@ -5,7 +5,7 @@ version: 1
 
 meta:
   name: devops-for-the-horde
-  summary: "Mac bootstrap hub — master config, Pages site, Cursor/agent docs."
+  summary: "Mac bootstrap hub — master config, Pages site, Mac→NixOS collector, Nix umbrella, Cursor/agent docs."
   owner: willy@iconoclastaud.io
 
 # Domains you care about (expand freely). Used for docs + agent updates.
@@ -24,14 +24,8 @@ domains:
     label: "AI lab"
 
 # Register satellite repos (add rows as you create them).
-repositories:
-  - id: main-release
-    github: shahzebqazi/main-release
-    url: https://github.com/shahzebqazi/main-release
-    summary: "Mac → NixOS bootstrap inventory, flake umbrella, satellite install orchestration (satellite-manifest.json)."
-    domains:
-      - coding
-      - computing
+# Mac→NixOS bootstrap + flake umbrella + install-all live in this repo (agent/mac-nixos-bootstrap/, flake.nix, nix/).
+repositories: []
 
 # Optional: pinned “next build” notes for agents / future you.
 notes: []

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/local/mac-nixos-bootstrap/inventory.schema.json",
+  "title": "macOS machine inventory for NixOS bootstrap planning",
+  "type": "object",
+  "required": ["meta", "system", "paths", "homebrew", "notes"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["collectedAt", "hostname", "source", "scriptVersion"],
+      "properties": {
+        "collectedAt": { "type": "string", "description": "ISO-8601 timestamp" },
+        "hostname": { "type": "string" },
+        "source": {
+          "type": "string",
+          "enum": ["collect-mac-state.py"],
+          "description": "Producer of this JSON; must match collect-mac-state.py output"
+        },
+        "scriptVersion": { "type": "string" },
+        "inventoryDigest": {
+          "type": "string",
+          "description": "SHA-256 hex of canonical leaves + casksInstalled + taps (see survey.inventory_digest)"
+        }
+      },
+      "additionalProperties": true
+    },
+    "system": {
+      "type": "object",
+      "required": ["sw_vers", "uname", "arch", "hardware", "shell", "loginShell"],
+      "properties": {
+        "sw_vers": { "type": "object", "additionalProperties": true },
+        "uname": { "type": "string" },
+        "arch": { "type": "string" },
+        "hardware": { "type": "object", "additionalProperties": true },
+        "shell": { "type": "string" },
+        "loginShell": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "paths": {
+      "type": "object",
+      "description": "Presence of common config files (boolean), not contents",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "homebrew": {
+      "type": "object",
+      "required": [
+        "prefix",
+        "version",
+        "taps",
+        "formulaeInstalled",
+        "casksInstalled",
+        "leaves",
+        "brewfile"
+      ],
+      "properties": {
+        "prefix": { "type": "string" },
+        "version": { "type": "string" },
+        "taps": { "type": "array", "items": { "type": "string" } },
+        "formulaeInstalled": { "type": "array", "items": { "type": "string" } },
+        "casksInstalled": { "type": "array", "items": { "type": "string" } },
+        "leaves": { "type": "array", "items": { "type": "string" } },
+        "brewfile": { "type": ["string", "null"], "description": "Raw Brewfile if present" }
+      },
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Non-fatal warnings from collection"
+    }
+  },
+  "additionalProperties": true
+}
