@@ -9,6 +9,8 @@
 | This repo | **Orc burrow**: master config, site, and coordination docs |
 | Other repos | **Specialized units**: per-app automation, Nix/Homebrew slices, experiments |
 
+**Contact:** [willy@iconoclastaud.io](mailto:willy@iconoclastaud.io)
+
 ---
 
 ## What this is for
