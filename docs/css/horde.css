@@ -1,5 +1,9 @@
 @import url("horde-tokens.css");
 
+html {
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -21,6 +25,11 @@ a {
 
 a:hover {
   border-bottom-color: var(--horde-bright);
+}
+
+a.btn {
+  border-bottom: none;
+  text-decoration: none;
 }
 
 .skip-link {
@@ -153,7 +162,7 @@ a:hover {
   transform: scale(1.01);
 }
 
-/* Readability: light bottom + left scrim — keeps most of the image bright and visible */
+/* Readability: stronger backing behind the text column (title + body copy) */
 .hero-showcase__veil {
   position: absolute;
   inset: 0;
@@ -162,16 +171,17 @@ a:hover {
   background:
     linear-gradient(
       180deg,
-      rgba(7, 10, 9, 0.12) 0%,
-      rgba(7, 10, 9, 0.02) 38%,
-      rgba(7, 10, 9, 0.35) 72%,
-      rgba(7, 10, 9, 0.88) 100%
+      rgba(7, 10, 9, 0.18) 0%,
+      rgba(7, 10, 9, 0.04) 36%,
+      rgba(7, 10, 9, 0.48) 70%,
+      rgba(7, 10, 9, 0.94) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(7, 10, 9, 0.72) 0%,
-      rgba(7, 10, 9, 0.18) min(52%, 28rem),
-      transparent min(72%, 42rem)
+      rgba(7, 10, 9, 0.9) 0%,
+      rgba(7, 10, 9, 0.55) min(46%, 26rem),
+      rgba(7, 10, 9, 0.12) min(62%, 36rem),
+      transparent min(78%, 48rem)
     );
 }
 
@@ -223,6 +233,92 @@ a:hover {
   .hero-showcase__panel {
     max-width: none;
   }
+}
+
+/* Hero copy: force high-contrast sans (avoids unreadable fallbacks) + readable buttons */
+.hero-showcase {
+  color: #f4fbf7;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-showcase .hero-showcase__panel.glass {
+  background: rgba(10, 16, 14, 0.86);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.hero-showcase__intro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.hero-showcase__intro-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-showcase__chibi {
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+}
+
+.hero-showcase .badge {
+  background: rgba(0, 0, 0, 0.38);
+  border-color: rgba(45, 212, 138, 0.55);
+  color: #8ff3c9;
+}
+
+.hero-showcase h1 {
+  color: #f4fbf7;
+  text-shadow:
+    0 2px 24px rgba(0, 0, 0, 0.75),
+    0 1px 3px rgba(0, 0, 0, 0.95);
+}
+
+.hero-showcase h1 .accent {
+  color: #f2e088;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+
+.hero-showcase .lede {
+  color: rgba(244, 251, 247, 0.94);
+  line-height: 1.65;
+}
+
+.hero-showcase .lede strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.hero-showcase .whisper {
+  color: rgba(233, 242, 237, 0.8);
+}
+
+.hero-showcase .whisper code {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.12em 0.45em;
+  border-radius: 6px;
+  font-size: 0.88em;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  color: #b8f5d9;
+  border: 1px solid rgba(45, 212, 138, 0.4);
+}
+
+.hero-showcase .btn--ghost {
+  color: #f4fbf7;
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.hero-showcase .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 .glass {

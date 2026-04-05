@@ -15,7 +15,7 @@
   <link rel="preload" as="image" href="assets/hero-horde-peons.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/horde.css" />
 </head>
 <body>
@@ -52,9 +52,21 @@
       <div class="hero-showcase__grid" aria-hidden="true"></div>
       <div class="hero-showcase__content">
         <div class="glass panel hero-showcase__panel">
-          <div class="badge" title="Ready to work.">
-            <img src="assets/logo-horde.png" alt="" width="18" height="18" />
-            Lok’tar — Mac bootstrap
+          <div class="hero-showcase__intro">
+            <img
+              class="hero-showcase__chibi"
+              src="assets/peon-chibi.svg"
+              width="56"
+              height="56"
+              alt=""
+              decoding="async"
+            />
+            <div class="hero-showcase__intro-text">
+              <div class="badge" title="Ready to work.">
+                <img src="assets/logo-horde.png" alt="" width="18" height="18" />
+                Lok’tar — Mac bootstrap
+              </div>
+            </div>
           </div>
           <h1 id="hero-title">devops-for-the-horde <span class="accent">zero → raid-ready</span></h1>
           <p class="lede">
@@ -160,6 +172,7 @@
   <footer class="site-footer">
     <p>
       Hero &amp; logo: original AI-generated imagery (orc-peon coding horde theme; not affiliated with Blizzard).
+      · Chibi mark: original SVG mascot (not WC3 rips — we skip embedded Blizzard GIFs for IP safety).
       · Contact: <a href="mailto:willy@iconoclastaud.io">willy@iconoclastaud.io</a>
     </p>
     <p><em>For the Warchief of your own rig. Lok’tar.</em></p>
