@@ -23,9 +23,66 @@ domains:
   - id: ai_lab
     label: "AI lab"
 
-# Register satellite repos (add rows as you create them).
-# Mac→NixOS bootstrap + flake umbrella + install-all live in this repo (agent/mac-nixos-bootstrap/, flake.nix, nix/).
-repositories: []
+# Linked repos (also listed in satellite-manifest.json for nix run .# horde-install-all).
+repositories:
+  - id: ai-agent-leaderkey
+    github: shahzebqazi/ai-agent-leaderkey
+    url: https://github.com/shahzebqazi/ai-agent-leaderkey
+    summary: "Leader-key / Hyper-key style automation."
+    domains:
+      - coding
+
+  - id: ai-agent-dotfiles-macos-linux
+    github: shahzebqazi/ai-agent-dotfiles-macos-linux
+    url: https://github.com/shahzebqazi/ai-agent-dotfiles-macos-linux
+    summary: "Dotfiles and shell setup for macOS and Linux."
+    domains:
+      - computing
+      - coding
+
+  - id: ai-macbook-config
+    github: shahzebqazi/ai-macbook-config
+    url: https://github.com/shahzebqazi/ai-macbook-config
+    summary: "MacBook-focused machine configuration."
+    domains:
+      - computing
+
+  - id: ai-agent-aerospace
+    github: shahzebqazi/ai-agent-aerospace
+    url: https://github.com/shahzebqazi/ai-agent-aerospace
+    summary: "AeroSpace tiling window manager setup."
+    domains:
+      - coding
+
+  - id: ai-agent-hiddenbar
+    github: shahzebqazi/ai-agent-hiddenbar
+    url: https://github.com/shahzebqazi/ai-agent-hiddenbar
+    summary: "HiddenBar menu-bar utilities."
+    domains:
+      - computing
+
+  - id: ai-agent-borders
+    github: shahzebqazi/ai-agent-borders
+    url: https://github.com/shahzebqazi/ai-agent-borders
+    summary: "Window borders / Yabai-adjacent styling helpers."
+    domains:
+      - coding
+
+  - id: ai-agent-ableton
+    github: shahzebqazi/ai-agent-ableton
+    url: https://github.com/shahzebqazi/ai-agent-ableton
+    summary: "Ableton Live workflow and config."
+    domains:
+      - audio
+      - coding
+
+  - id: ai-agent-cursor-config
+    github: shahzebqazi/ai-agent-cursor-config
+    url: https://github.com/shahzebqazi/ai-agent-cursor-config
+    summary: "Cursor editor configuration and snippets."
+    domains:
+      - coding
+      - ai_lab
 
 # Optional: pinned “next build” notes for agents / future you.
 notes: []
