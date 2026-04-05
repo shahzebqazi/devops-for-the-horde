@@ -15,7 +15,10 @@
   <link rel="preload" as="image" href="assets/hero-horde-peons.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Outfit:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="css/horde.css" />
 </head>
 <body>
@@ -53,14 +56,12 @@
       <div class="hero-showcase__content">
         <div class="glass panel hero-showcase__panel">
           <div class="hero-showcase__intro">
-            <img
-              class="hero-showcase__chibi"
-              src="assets/peon-chibi.svg"
-              width="56"
-              height="56"
-              alt=""
-              decoding="async"
-            />
+            <div class="hero-showcase__mascots" aria-hidden="true">
+              <img class="hero-showcase__chibi" src="assets/peon-chibi.svg" width="52" height="52" alt="" decoding="async" />
+              <img class="hero-showcase__chibi" src="assets/peon-chibi-b.svg" width="52" height="52" alt="" decoding="async" />
+              <img class="hero-showcase__chibi" src="assets/peon-chibi-c.svg" width="52" height="52" alt="" decoding="async" />
+              <img class="hero-showcase__chibi" src="assets/peon-chibi-d.svg" width="52" height="52" alt="" decoding="async" />
+            </div>
             <div class="hero-showcase__intro-text">
               <div class="badge" title="Ready to work.">
                 <img src="assets/logo-horde.png" alt="" width="18" height="18" />
@@ -68,12 +69,17 @@
               </div>
             </div>
           </div>
-          <h1 id="hero-title">devops-for-the-horde <span class="accent">zero → raid-ready</span></h1>
+          <h1 id="hero-title">
+            <span class="hero-title__wordmark">devops-for-the-horde</span>
+            <span class="accent">zero → raid-ready</span>
+          </h1>
           <p class="lede">
             Central command post for a Mac that goes from <strong>fresh install</strong> to <strong>fully productive</strong> fast:
             one master config, satellite repos for apps and stacks, and Cursor-first workflows so agents can help keep docs honest.
           </p>
-          <p class="whisper">Agents: start from <code>config/master.yaml</code>—<em>something need doing?</em></p>
+          <p class="whisper">
+            <span class="whisper__label">Agents:</span> start from <code>config/master.yaml</code>—<em>something need doing?</em>
+          </p>
           <div class="cta">
             <a class="btn btn--primary" href="https://github.com/shahzebqazi/devops-for-the-horde">View repository</a>
             <a class="btn btn--ghost" href="https://github.com/shahzebqazi/devops-for-the-horde/issues">Ideas &amp; issues</a>

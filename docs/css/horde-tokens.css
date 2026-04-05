@@ -1,0 +1,28 @@
+/**
+ * devops-for-the-horde — shared design tokens (README-adjacent site + minicons).
+ */
+:root {
+  --horde: #1f6f4a;
+  --horde-deep: #0f2d1f;
+  --horde-bright: #2dd48a;
+  --gold: #e8c547;
+  --gold-dim: rgba(232, 197, 71, 0.45);
+  --bg: #070a09;
+  --bg-elevated: #0d1411;
+  --glass: rgba(18, 24, 22, 0.55);
+  --glass-edge: rgba(255, 255, 255, 0.12);
+  --text: #e9f2ed;
+  --muted: rgba(233, 242, 237, 0.72);
+  --clear-bg: #e9f2ed;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  /* ≥4 families: Outfit (chrome), Syne (headlines), Inter (body), JetBrains Mono (tech), + Instrument Serif + Fraunces */
+  --font-ui: "Outfit", system-ui, sans-serif;
+  --font-headline: "Syne", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-whisper: "Fraunces", "Instrument Serif", Georgia, serif;
+  --font-sans: var(--font-body);
+}
